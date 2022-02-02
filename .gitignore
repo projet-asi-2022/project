@@ -2,3 +2,5 @@
 RemoteSystemsTempFiles/
 build/
 .classpath
+*/bin/lib
+*/bin
