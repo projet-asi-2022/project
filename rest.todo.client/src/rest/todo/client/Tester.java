@@ -15,7 +15,7 @@ import javax.ws.rs.core.UriBuilder;
 
 import org.glassfish.jersey.client.ClientConfig;
 
-import rest.todo.model.Todo;
+import boutique.model.Todo;
 
 
 
