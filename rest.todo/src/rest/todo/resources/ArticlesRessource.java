@@ -24,8 +24,8 @@ import javax.xml.bind.JAXBElement;
 import rest.todo.dao.*;
 import rest.todo.model.*;
 
-@Path("/article")
-public class ArticleRessource {
+@Path("/articles")
+public class ArticlesRessource {
     // Allows to insert contextual objects into the class,
     // e.g. ServletContext, Request, Response, UriInfo
     @Context
@@ -62,4 +62,6 @@ public class ArticleRessource {
         int count = ArticleDao.instance.getModel().size();
         return String.valueOf(count);
     }
+    
+    
 }
