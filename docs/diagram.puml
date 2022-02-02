@@ -1,0 +1,78 @@
+@startuml asi-project
+!include ./commons.style
+
+class Article {
+    +libelle
+    +marque
+    +prix
+    +catégorie: Catégorie
+    +photo: Photo
+}
+
+class Photo {
+    +size: int
+    +url: String
+}
+
+class Catégorie {
+    +nom : String 
+}
+
+
+class Utilisateur {
+    nom: String 
+    prenom: String 
+    email: String
+}
+
+
+class Client {
+
+}
+
+class Panier {
+    +confirmé
+    +prixTotal()
+    +ajouter()
+    +supprimer()
+    +modifier()
+    +confirmation()
+    +annulation()
+}
+
+class PanierArticle {
+    +quantite
+    +prix()
+}
+
+class Boutique {
+    +description: String
+    +adresse: String
+    +contact: String
+    +créationUtilisateur()
+    +modificationUtilisateur()
+    +suppressionUtilisateur()
+}
+
+class Administrateur {
+    +créationArticle()
+    +modificationArticle()
+    +suppressionArticle()
+    +affichageArticle()
+    +créationCatégorie()
+    +modificationCatégorie()
+    +suppressionCatégorie()
+}
+
+Article -> "*" Catégorie
+Article --> Photo
+Panier "*" -right- "*" Article
+(Panier, Article) .. PanierArticle
+Utilisateur -> Panier 
+Boutique --> "*" Utilisateur
+Administrateur --> Article
+Administrateur --> Catégorie
+Administrateur --|> Utilisateur
+Client --|> Utilisateur
+
+@enduml 
