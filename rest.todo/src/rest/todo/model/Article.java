@@ -9,7 +9,6 @@ public class Article {
     private Photo photo;
     
 	public Article(String libelle, String marque, float prix, Categorie categorie) {
-		super();
 		this.libelle = libelle;
 		this.marque = marque;
 		this.prix = prix;

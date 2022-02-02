@@ -1,10 +1,18 @@
 package rest.todo.resources;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -18,61 +26,40 @@ import rest.todo.model.*;
 
 @Path("/article")
 public class ArticleRessource {
+    // Allows to insert contextual objects into the class,
+    // e.g. ServletContext, Request, Response, UriInfo
     @Context
     UriInfo uriInfo;
     @Context
     Request request;
-    String id;
-    public ArticleRessource(UriInfo uriInfo, Request request, String id) {
-        this.uriInfo = uriInfo;
-        this.request = request;
-        this.id = id;
-    }
-    
-    // Application integration ! might not be useful
+
+    // Return the list of Articles to the user in the browser
     @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Article getArticle() {
-    	/* Returns an Article with the provided id. */
-        Article Article = ArticleDao.instance.getModel().get(id);
-        if(Article==null)
-            throw new RuntimeException("Get: Article with " + id +  " not found");
-        return Article;
+    @Produces(MediaType.TEXT_XML)
+    public List<Article> getArticlesBrowser() {
+        List<Article> Articles = new ArrayList<Article>();
+        Articles.addAll(ArticleDao.instance.getModel().values());
+        return Articles;
     }
-    
-    // Browser IHM
+
+    // Return the list of Articles for applications
     @GET
-    @Produces({MediaType.TEXT_XML})
-    public Article getArticleHTML() {
-    	/* Returns an Article with the provided id. */
-        Article Article = ArticleDao.instance.getModel().get(id);
-        if(Article==null)
-            throw new RuntimeException("Get: Article with " + id +  " not found");
-        return Article;
+    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    public List<Article> getArticles() {
+        List<Article> Articles = new ArrayList<Article>();
+        Articles.addAll(ArticleDao.instance.getModel().values());
+        return Articles;
     }
 
-    @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public Response putArticle(JAXBElement<Article> Article) {
-        Article c = Article.getValue();
-        return putAndGetResponse(c);
-    }
-
-    @DELETE
-    public void deleteArticle() {
-        Article c = ArticleDao.instance.getModel().remove(id);
-        if(c==null)
-            throw new RuntimeException("Delete: Article with " + id +  " not found");
-    }
-
-    private Response putAndGetResponse(Article Article) {
-        Response res;
-        if(ArticleDao.instance.getModel().containsKey(Article.getId())) {
-            res = Response.noContent().build();
-        } else {
-            res = Response.created(uriInfo.getAbsolutePath()).build();
-        }
-        ArticleDao.instance.getModel().put(Article.getId(), Article);
-        return res;
+    // returns the number of Articles
+    // Use http://localhost:8080/com.vogella.jersey.Article/rest/Articles/count
+    // rest.Article au lieu de com.vogella.jersey.Article
+    // to get the total number of records
+    @GET
+    @Path("count")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getCount() {
+        int count = ArticleDao.instance.getModel().size();
+        return String.valueOf(count);
     }
 }
