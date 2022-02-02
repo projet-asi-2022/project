@@ -24,5 +24,11 @@
 			<attribute name="maven.scope" value="provided"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="libs/javax.servlet-api-3.1.0.jar"/>
+	<classpathentry kind="lib" path="libs/jboss-jaxb-api_2.2_spec-1.0.4.Final.jar"/>
+	<classpathentry kind="lib" path="libs/jboss-jaxb-api_2.3_spec-2.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="libs/jboss-servlet-api_3.1_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="libs/mysql-connector-java-5.1.27-bin.jar"/>
+	<classpathentry kind="lib" path="libs/sqlite-jdbc-3.34.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
