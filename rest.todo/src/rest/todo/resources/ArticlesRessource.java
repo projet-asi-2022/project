@@ -63,5 +63,13 @@ public class ArticlesRessource {
         return String.valueOf(count);
     }
     
-    
+    // Defines that the next path parameter after articles is
+    // treated as a parameter and passed to the TodoResources
+    // Allows to type http://localhost:8080/rest.todo/rest/todos/1
+    // 1 will be treaded as parameter article and passed to TodoResource
+    @Path("{article}")
+    public ArticleRessource getArticle(@PathParam("article") int id) {
+        return new ArticleRessource(uriInfo, request, id);
+    }
+
 }

@@ -1,5 +1,6 @@
 package rest.todo.model;
 
+
 public class Article {
 	private Integer id;
 	private String libelle;
@@ -8,7 +9,8 @@ public class Article {
     private Categorie categorie;
     private Photo photo;
     
-	public Article(String libelle, String marque, float prix, Categorie categorie) {
+	public Article(int id, String libelle, String marque, float prix, Categorie categorie) {
+		this.id = id;
 		this.libelle = libelle;
 		this.marque = marque;
 		this.prix = prix;
