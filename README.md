@@ -11,4 +11,9 @@
 - npm install
 - ng serve --open
 
+# Creer la base de données local 
 
+- installez Sqlite3
+- ouvrez une nouvelle cmd à la racine du projet et éxecutez les lignes de commandes suivantes 
+- sqlite3 HightTechDB.db (Création bd)
+- sqlite3 HighTechDB.db .dump < HighTech.sql (Alimente la bd)

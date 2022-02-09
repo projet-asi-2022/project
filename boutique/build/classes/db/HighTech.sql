@@ -1,7 +1,3 @@
-sqlite3 HighTechDB.db
-
-sqlite3 HighTechDB.db .dump < HighTech.sql
-
 CREATE TABLE Photo (
 id INTEGER PRIMARY KEY,
 size INTEGER NOT NULL,
