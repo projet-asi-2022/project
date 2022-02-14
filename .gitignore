@@ -11,6 +11,8 @@ local.properties
 .recommenders
 RemoteSystemsTempFiles/
 
+*.class
+
 .idea/
 Servers/
 
