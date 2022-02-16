@@ -9,7 +9,7 @@ import { ArticlesService } from 'src/app/services/articles.service';
 export class ListComponent implements OnInit {
 
   articles: any;
-  currentBook:any;
+  currentArticle:any;
   currentIndex = -1;
   searchTitle = '';
 

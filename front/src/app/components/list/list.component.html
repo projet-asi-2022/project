@@ -10,22 +10,29 @@
     </div>
   </div>
   <div class="col-md-12">
-    <h4>article List</h4>
+    <h4>Articles List</h4>
 
     <table class="table">
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Description</th>
+          <th scope="col">ID</th>
+          <th scope="col">Libelle</th>
+          <th scope="col">Marque</th>
+          <th scope="col">Prix</th>
+          <th scope="col">Catégorie</th>
+          <th scope="col">Photo</th>
           <th scope="col" style="min-width: 150px;">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let article of articles;">
           <th scope="row">{{article.id}}</th>
-          <td><b>{{article.title}}</b></td>
-          <td>{{article.description}}</td>
+          <td>{{article.libelle}}</td>
+          <td>{{article.marque}}</td>
+          <td>{{article.prix}}</td>
+          <td>{{article.categorie}}</td>
+          <td>{{article.photo}}</td>
           <td>
             <button type="button" class="btn btn-danger" routerLink="/articles/{{article.id}}">Edit</button>
             <button type="button" class="btn btn-warning" (click)="deleteArticle(article.id)">Delete</button>
