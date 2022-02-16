@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ConnexionComponent } from './connexion/connexion.component';
+import { ConnexionComponent } from './auth/connexion/connexion.component';
 import { HomeComponent } from './home/home.component';
 import { PhonesModule } from './modules/phones/phones.module';
 import { PcAccessoiresComponent } from './pc-accessoires/pc-accessoires.component';
