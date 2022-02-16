@@ -6,6 +6,6 @@ import { environment } from '../../environments/environment'
 export class AuthService{
     constructor(private http: HttpClient){}
     CreateUser(email: string, password: string){
-        this.http.post(environment. "user/signup");
+        this.http.post(environment.api.concat("user/signup"));
     }
 }
