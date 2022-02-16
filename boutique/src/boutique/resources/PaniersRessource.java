@@ -23,7 +23,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBElement;
 
 @Path("/paniers")
-public class PanierRessource {
+public class PaniersRessource {
 
   // Allows to insert contextual objects into the class,
   // e.g. ServletContext, Request, Response, UriInfo
@@ -35,7 +35,7 @@ public class PanierRessource {
 
   int id;
 
-  public PanierRessource(UriInfo uriInfo, Request request, int id) {
+  public PaniersRessource(UriInfo uriInfo, Request request, int id) {
     this.uriInfo = uriInfo;
     this.request = request;
     this.id = id;
@@ -76,7 +76,7 @@ public class PanierRessource {
   // Allows to type http://localhost:8080/rest.todo/rest/todos/1
   // 1 will be treaded as parameter Panier and passed to TodoResource
   @Path("{Panier}")
-  public PanierRessource getPanier(@PathParam("Panier") int id) {
-    return new PanierRessource(uriInfo, request, id);
+  public PaniersRessource getPanier(@PathParam("Panier") int id) {
+    return new PaniersRessource(uriInfo, request, id);
   }
 }

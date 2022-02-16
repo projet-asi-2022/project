@@ -23,7 +23,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBElement;
 
 @Path("/categories")
-public class CategorieRessource {
+public class CategoriesRessource {
 
   // Allows to insert contextual objects into the class,
   // e.g. ServletContext, Request, Response, UriInfo
@@ -35,7 +35,7 @@ public class CategorieRessource {
 
   int id;
 
-  public CategorieRessource(UriInfo uriInfo, Request request, int id) {
+  public CategoriesRessource(UriInfo uriInfo, Request request, int id) {
     this.uriInfo = uriInfo;
     this.request = request;
     this.id = id;
@@ -76,7 +76,7 @@ public class CategorieRessource {
   // Allows to type http://localhost:8080/rest.todo/rest/todos/1
   // 1 will be treaded as parameter Categorie and passed to TodoResource
   @Path("{Categorie}")
-  public CategorieRessource getCategorie(@PathParam("Categorie") int id) {
-    return new CategorieRessource(uriInfo, request, id);
+  public CategoriesRessource getCategorie(@PathParam("Categorie") int id) {
+    return new CategoriesRessource(uriInfo, request, id);
   }
 }

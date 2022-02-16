@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Panier {
 	private boolean confirme; 
+	private int id;
     private List<Article> articles = new ArrayList<>();
 	private float prixTotal(){return 1;}
 	
@@ -19,6 +20,19 @@ public class Panier {
 	}
 	public void removeArticle(int n)  {
 		this.articles.remove(n);
+	}
+
+	public int getId() {
+		// TODO Auto-generated method stub
+		return this.id;
+	}
+
+	public boolean isConfirme() {
+		return confirme;
+	}
+
+	public void setConfirme(boolean confirme) {
+		this.confirme = confirme;
 	}
 	
 }
