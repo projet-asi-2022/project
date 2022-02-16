@@ -1,1 +1,2 @@
 - diagramme de classes
+- importer la connexion depuis le module auth
