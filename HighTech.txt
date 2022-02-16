@@ -4,7 +4,7 @@ sqlite3 HighTechDB.db .dump < HighTech.sql
 
 CREATE TABLE Photo (
 id INTEGER PRIMARY KEY,
-size INTEGER NOT NULL,
+size FLOAT NOT NULL,
 url TEXT NOT NULL
 );
 
@@ -35,6 +35,7 @@ nom TEXT NOT NULL,
 prenom TEXT NOT NULL,
 email TEXT NOT NULL,
 idRole INTEGER NOT NULL,
+dateNaissance TEXT NOT NULL,
 FOREIGN KEY (idRole) REFERENCES Role(id)
 );
 
