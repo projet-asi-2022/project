@@ -1,0 +1,24 @@
+<form #connexionForm="ngForm" (ngSubmit)="connexion(connexionForm)">
+  <div class="row mb—3" style="width: 569px">
+    <label for="inputEmai13" class="col-sm—2 col—formrlabel">Email</label>
+    <div class="col—sm—1a">
+      <input type="email" class="form-control" id="inputEmai13" name="email" #email="ngModel" ngModel email required>
+      <div class="alert alert—danger" *ngIf="formControls['email'].errors?.['required'] && formControls['touched']" role="alert">
+        Email required!
+      </div>
+    </div>
+  </div>
+  <div class="row mb—3" style="width: 500px">
+    <label for="inputPassword3" class="col—sm—2 col—form-label">Password</label>
+    <div class="col—sm—1a">
+      <input type="password" class="form—C0ntrol" id="inputPassword3" name="pass" #pass="ngModel" ngModel required minlength="8">
+      <div Class="alert alert—danger" *ngIF="messageError" role="alert">
+        {{messageError}}
+      </div>
+      <div class="alert alert—danger" *ngIF="pass.errors?.mimlength && pass.touched" role="alert">
+        minlength required!
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn—primary" [disabled]="formControls['invalid']">Log in</button>
+</form>
