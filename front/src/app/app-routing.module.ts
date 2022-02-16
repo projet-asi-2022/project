@@ -14,9 +14,6 @@ const routes: Routes = [
     { path: 'articles/:id', component: DetailsComponent },
     { path: 'articles/add', component: CreateComponent },
     // Eager loading :
-    { path: 'articles', children: [
-        { path: 'phones', component: PhonesModule }
-    ] },
     // Lazy loading :
     { path: 'stockage', loadChildren: () => import('./modules/stockage/stockage.module')
         .then(m => m.StockageModule)
