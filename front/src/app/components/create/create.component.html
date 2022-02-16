@@ -1,0 +1,22 @@
+<div style="width: 500px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!isArticleAdded">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" required [(ngModel)]="article.title" name="name" />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input class="form-control" id="description" required [(ngModel)]="article.description" name="description" />
+      </div>
+
+      <button (click)="addArticle()" class="btn btn-success">Create</button>
+    </div>
+
+    <div *ngIf="isArticleAdded">
+      <h3>New Article added!</h3>
+      <button class="btn btn-success" (click)="newArticle()"> + Add More</button>
+    </div>
+  </div>
+</div>
