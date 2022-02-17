@@ -7,14 +7,14 @@ import java.util.Map;
 public enum CategorieDao {
   instance;
 
-  private Map<Integer, Categorie> contentProvider = new HashMap<>();
+  private Map<String, Categorie> contentProvider = new HashMap<>();
 
   private CategorieDao() {
     Categorie accessoires = new Categorie("Accessoires ordinateurs");
-    contentProvider.put(1, accessoires);
+    contentProvider.put("nom", accessoires);
   }
 
-  public Map<Integer, Categorie> getModel() {
+  public Map<String, Categorie> getModel() {
     return contentProvider;
   }
 }

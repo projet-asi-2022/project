@@ -69,12 +69,12 @@ public class CategorieRessource {
 
   private Response putAndGetResponse(Categorie Categorie) {
     Response res;
-    if (CategorieDao.instance.getModel().containsKey(Categorie.getId())) {
+    if (CategorieDao.instance.getModel().containsKey(Categorie.getNom())) {
       res = Response.noContent().build();
     } else {
       res = Response.created(uriInfo.getAbsolutePath()).build();
     }
-    CategorieDao.instance.getModel().put(Categorie.getId(), Categorie);
+    CategorieDao.instance.getModel().put(Categorie.getNom(), Categorie);
     return res;
   }
 }

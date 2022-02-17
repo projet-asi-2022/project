@@ -23,7 +23,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBElement;
 
 @Path("/paniers")
-public class PanierRessource {
+public class PaniersRessource {
 
   // Allows to insert contextual objects into the class,
   // e.g. ServletContext, Request, Response, UriInfo
@@ -35,7 +35,7 @@ public class PanierRessource {
 
   int id;
 
-  public PanierRessource(UriInfo uriInfo, Request request, int id) {
+  public PaniersRessource(UriInfo uriInfo, Request request, int id) {
     this.uriInfo = uriInfo;
     this.request = request;
     this.id = id;
