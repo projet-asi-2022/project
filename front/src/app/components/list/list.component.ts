@@ -4,16 +4,15 @@ import { ArticlesService } from 'src/app/services/articles.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-
   articles: any;
-  currentArticle:any;
+  currentArticle: any;
   currentIndex = -1;
   searchTitle = '';
 
-  constructor(private articlesService: ArticlesService) { }
+  constructor(private articlesService: ArticlesService) {}
 
   ngOnInit(): void {
     this.getAllarticles();
@@ -21,38 +20,37 @@ export class ListComponent implements OnInit {
 
   // Get list
   getAllarticles(): void {
-    this.articlesService.list()
-      .subscribe(
-        (articles: any) => {
-          this.articles = articles;
-        },
-        (error: any) => {
-          console.log(error);
-        });
+    this.articlesService.list().subscribe(
+      (articles: any) => {
+        this.articles = articles;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
   }
 
   // Delete action
-  deleteArticle(id:number){
-    this.articlesService.delete(id)
-    .subscribe(
-      response => {
+  deleteArticle(id: number) {
+    this.articlesService.delete(id).subscribe(
+      (response) => {
         this.getAllarticles();
       },
-      error => {
+      (error) => {
         console.log(error);
-      });
+      }
+    );
   }
 
   // Search items
   searchByTitle(): void {
-    this.articlesService.filterByTitle(this.searchTitle)
-      .subscribe(
-        articles => {
-          this.articles = articles;
-        },
-        error => {
-          console.log(error);
-        });
+    this.articlesService.filterByTitle(this.searchTitle).subscribe(
+      (articles) => {
+        this.articles = articles;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
-
 }
