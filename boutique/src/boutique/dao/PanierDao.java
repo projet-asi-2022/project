@@ -10,11 +10,11 @@ public enum PanierDao {
   private Map<Integer, Panier> contentProvider = new HashMap<>();
 
   private PanierDao() {
-    Categorie accessoires = new Categorie("Accessoires ordinateurs");
+    Categorie accessoires = new Categorie(1, "Accessoires ordinateurs");
 
     Article souris = ArticleDao.instance.getModel().get(1);
 
-    Panier panier = new Panier();
+    Panier panier = new Panier(1);
     panier.addArticle(souris);
     contentProvider.put(1, panier);
   }

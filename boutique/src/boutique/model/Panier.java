@@ -4,10 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Panier {
-	private int id;
+	private Integer id;
 	private boolean confirme; 
     private List<Article> articles = new ArrayList<>();
 	private float prixTotal(){return 1;}
+	
+	public Panier(int id) {
+		this.id = id;
+		this.confirme = false;
+	}
 	
 	public List<Article> getArticles() {
 		return articles;
@@ -22,7 +27,7 @@ public class Panier {
 		this.articles.remove(n);
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return this.id ; 
 	}
 
