@@ -7,6 +7,7 @@ public class Utilisateur {
 	private String password; 
 	private String date_naissance ; 
 	private Panier panier ;
+	public Role role ; 
 	
 	public Utilisateur(String nom, String prenom, String email, String password, String date_naissance, Panier panier) {
 		this.nom = nom;
@@ -53,6 +54,10 @@ public class Utilisateur {
 	public void setPanier(Panier panier) {
 		this.panier = panier;
 	} 
-	
-	
+	public void setAdmin() {
+		this.role = Role.ADMIN ; 
+	}
+	public void setUser() {
+		this.role = Role.USER ; 
+	}
 }
