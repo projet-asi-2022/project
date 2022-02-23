@@ -13,7 +13,7 @@ export class AuthService{
             prenom: prenom,
             nom: nom,
             date_naissance: date_naissance
-        }  
+        }
         this.http.post(environment.api.concat("user/signup"), authData)
             .subscribe(response =>{
                 console.log(response);
