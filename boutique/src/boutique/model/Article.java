@@ -5,11 +5,11 @@ public class Article {
 	private Integer id;
 	private String libelle;
     private String marque;
-    private float prix;
+    private double prix;
     private Categorie categorie;
     private Photo photo;
     
-	public Article(int id, String libelle, String marque, float prix, Categorie categorie) {
+	public Article(int id, String libelle, String marque, double prix, Categorie categorie) {
 		this.id = id;
 		this.libelle = libelle;
 		this.marque = marque;
@@ -29,7 +29,7 @@ public class Article {
 	public void setMarque(String marque) {
 		this.marque = marque;
 	}
-	public float getPrix() {
+	public double getPrix() {
 		return this.prix;
 	}
 	public void setPrix(float prix) {

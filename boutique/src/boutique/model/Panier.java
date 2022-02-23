@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Panier {
-	private Integer id;
 	private boolean confirme; 
 	private int id;
     private List<Article> articles = new ArrayList<>();
-	private float prixTotal(){return 1;}
+	private Double prixTotal(){return this.articles.stream().mapToDouble(a -> a.getPrix()).reduce(0, Double::sum);}
 	
 	public Panier(int id) {
 		this.id = id;
@@ -40,9 +39,6 @@ public class Panier {
 	public void setConfirme(boolean confirme) {
 		this.confirme = confirme;
 	}
-	
-	public Integer getId() {
-		return this.id ; 
-	}
+
 
 }

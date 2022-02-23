@@ -1,7 +1,6 @@
 package boutique.model;
 
 public class Categorie {
-	private Integer id;
 	private String nom;
 	private int id;
 
@@ -22,8 +21,4 @@ public class Categorie {
 		this.nom = nom;
 	}
 
-	public int getId() {
-		// TODO Auto-generated method stub
-		return this.id;
-	} 
 }
