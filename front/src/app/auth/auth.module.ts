@@ -4,16 +4,15 @@ import { ConnexionComponent } from './connexion/connexion.component';
 //import { AuthComponent } from './auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     ConnexionComponent,
-//    AuthComponent,
+    //    AuthComponent,
   ],
   imports: [
     CommonModule,
-    FormsModule,    //import here
-    ReactiveFormsModule //import here
-  ]
+    FormsModule, //import here
+    ReactiveFormsModule, //import here
+  ],
 })
-export class AuthModule { }
+export class AuthModule {}

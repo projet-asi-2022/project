@@ -5,15 +5,14 @@ import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
 })
-
 export class AdminComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
 
-  logout(){
+  logout() {
     this.authService.logout();
     this.router.navigateByUrl('/login');
   }

@@ -9,7 +9,5 @@ import { Router } from '@angular/router';
 export class ArticleComponent implements OnInit {
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    this.router.navigateByUrl('/list');
-  }
+  ngOnInit(): void {}
 }

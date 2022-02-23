@@ -4,14 +4,15 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { catchError } from 'rxjs/operators';
 import { Observable, Subject, throwError } from 'rxjs';
-@Injectable({
-  providedIn: 'root',
-})
+import { Article } from '../models/articles.model';
+import { Categorie } from '../models/categories.model';
+
+@Injectable()
 export class ArticlesService {
   apiUrl: string = 'http://localhost:8080/boutique/rest/articles';
-
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
   articlesSubject = new Subject<any[]>();
 
   private articles = [{}];
@@ -24,7 +25,6 @@ export class ArticlesService {
   getAllArticlesFromServer() {
     this.httpClient.get<any[]>(this.apiUrl).subscribe((reponse) => {
       this.articles = reponse;
-      console.log(reponse);
     });
   }
 }

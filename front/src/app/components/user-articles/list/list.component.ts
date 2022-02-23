@@ -15,30 +15,6 @@ export class UserListComponent implements OnInit {
   constructor(private articlesService: ArticlesService) {}
 
   ngOnInit(): void {
-    this.getAllarticles();
-  }
-
-  // Get list
-  getAllarticles(): void {
-    this.articlesService.list().subscribe(
-      (articles: any) => {
-        this.articles = articles;
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-  }
-
-  // Search items
-  searchByTitle(): void {
-    this.articlesService.filterByTitle(this.searchTitle).subscribe(
-      (articles) => {
-        this.articles = articles;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.articlesService.getAllArticlesFromServer();
   }
 }
