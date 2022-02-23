@@ -1,0 +1,31 @@
+<div style="width: 500px; margin: auto;">
+    <div *ngIf="currentArticle" class="edit-form">
+      <h4>Article</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentArticle.title"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="currentArticle.description"
+            name="description"
+          />
+        </div>
+  
+      </form>
+  
+      <button type="button" class="btn btn-danger" (click)="add2Panier()" >Àjouter au panier</button>
+    </div>
+  
+  </div>
