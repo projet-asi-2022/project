@@ -10,11 +10,13 @@ import { PhonesModule } from './modules/phones/phones.module';
 import { StockageModule } from './modules/stockage/stockage.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CreateComponent } from './components/create/create.component';
-import { DetailsComponent } from './components/details/details.component';
-import { ListComponent } from './components/list/list.component';
-import { ArticlesModule } from './Pages/articles/articles.module';
 import { CommonModule } from '@angular/common';
+import { CreateComponent } from './components/admin-articles/create/create.component';
+import { ArticlesModule } from './Pages/articles/articles.module';
+import { ListComponent } from './components/admin-articles/list/list.component';
+import { DetailsComponent } from './components/admin-articles/details/details.component';
+import { UserDetailsComponent } from './components/user-articles/details/details.component';
+import { UserListComponent } from './components/user-articles/list/list.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { AuthComponent } from './auth/auth.component';
@@ -28,6 +30,8 @@ import { AuthComponent } from './auth/auth.component';
     ListComponent,
     AdminComponent,
     AuthComponent,
+    UserDetailsComponent,
+    UserListComponent
   ],
   imports: [
     CommonModule,

@@ -1,13 +1,13 @@
 package boutique.model;
 
-
 public class Article {
 	private Integer id;
 	private String libelle;
     private String marque;
     private double prix;
     private Categorie categorie;
-    private Photo photo;
+    //private Photo photo;
+	private Photo photo;
     
 	public Article(int id, String libelle, String marque, double prix, Categorie categorie) {
 		this.id = id;
@@ -45,6 +45,7 @@ public class Article {
 		return this.photo;
 	}
 	public void setPhoto(Photo photo) {
+		
 		this.photo = photo;
 	}
 

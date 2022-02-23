@@ -5,7 +5,6 @@ public class Photo {
 	private String url;
 	
 	public Photo(float size, String url) {
-		super();
 		this.size = size;
 		this.url = url;
 	}
