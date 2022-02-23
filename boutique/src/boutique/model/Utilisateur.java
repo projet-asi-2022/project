@@ -1,6 +1,7 @@
 package boutique.model;
 
 public class Utilisateur {
+	private int id ;
 	private String nom ; 
 	private String prenom ; 
 	private String email ; 
@@ -9,7 +10,8 @@ public class Utilisateur {
 	private Panier panier ;
 	public Role role ; 
 	
-	public Utilisateur(String nom, String prenom, String email, String password, String date_naissance, Panier panier) {
+	public Utilisateur(int id, String nom, String prenom, String email, String password, String date_naissance) {
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
