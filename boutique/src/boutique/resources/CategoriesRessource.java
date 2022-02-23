@@ -36,37 +36,35 @@ public class CategoriesRessource {
   // Return the list of Categories to the user in the browser
   @GET
   @Produces(MediaType.TEXT_XML)
-  public List<Categorie> getCategoriesBrowser() {
+  public Response getCategoriesBrowser() {
     List<Categorie> Categories = new ArrayList<Categorie>();
     Categories.addAll(CategorieDao.instance.getModel().values());
-    return Categories;
+    return Response
+            .status(200)
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+            .header("Access-Control-Allow-Credentials", "true")
+            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+            .header("Access-Control-Max-Age", "1209600")
+            .entity(Categories).build();
   }
 
   // Return the list of Categories for applications
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-  public List<Categorie> getCategories() {
+  public Response getCategories() {
     List<Categorie> Categories = new ArrayList<Categorie>();
     Categories.addAll(CategorieDao.instance.getModel().values());
-    return Categories;
+    return Response
+            .status(200)
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+            .header("Access-Control-Allow-Credentials", "true")
+            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+            .header("Access-Control-Max-Age", "1209600")
+            .entity(Categories).build();
   }
 
-  // returns the number of Categories
-  // Use http://localhost:8080/com.vogella.jersey.Categorie/rest/Categories/count
-  // rest.Categorie au lieu de com.vogella.jersey.Categorie
-  // to get the total number of records
-  @GET
-  @Path("count")
-  @Produces(MediaType.TEXT_PLAIN)
-  public String getCount() {
-    int count = CategorieDao.instance.getModel().size();
-    return String.valueOf(count);
-  }
-
-  // Defines that the next path parameter after Categories is
-  // treated as a parameter and passed to the TodoResources
-  // Allows to type http://localhost:8080/rest.todo/rest/todos/1
-  // 1 will be treaded as parameter Categorie and passed to TodoResource
   @Path("{categorie}")
   public CategorieRessource getCategorie(@PathParam("categorie") int id) {
     return new CategorieRessource(uriInfo, request, id);

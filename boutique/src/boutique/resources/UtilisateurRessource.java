@@ -24,7 +24,7 @@ public class UtilisateurRessource {
 
   int id;
 
-  public UtilisateurRessource2(UriInfo uriInfo, Request request, int id) {
+  public UtilisateurRessource(UriInfo uriInfo, Request request, int id) {
     this.uriInfo = uriInfo;
     this.request = request;
     this.id = id;

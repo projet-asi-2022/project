@@ -36,31 +36,33 @@ public class PaniersRessource {
   // Return the list of Paniers to the user in the browser
   @GET
   @Produces(MediaType.TEXT_XML)
-  public List<Panier> getPaniersBrowser() {
+  public Response getPaniersBrowser() {
     List<Panier> Paniers = new ArrayList<Panier>();
     Paniers.addAll(PanierDao.instance.getModel().values());
-    return Paniers;
+    return Response
+            .status(200)
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+            .header("Access-Control-Allow-Credentials", "true")
+            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+            .header("Access-Control-Max-Age", "1209600")
+            .entity(Paniers).build();
   }
 
   // Return the list of Paniers for applications
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-  public List<Panier> getPaniers() {
+  public Response getPaniers() {
     List<Panier> Paniers = new ArrayList<Panier>();
     Paniers.addAll(PanierDao.instance.getModel().values());
-    return Paniers;
-  }
-
-  // returns the number of Paniers
-  // Use http://localhost:8080/com.vogella.jersey.Panier/rest/Paniers/count
-  // rest.Panier au lieu de com.vogella.jersey.Panier
-  // to get the total number of records
-  @GET
-  @Path("count")
-  @Produces(MediaType.TEXT_PLAIN)
-  public String getCount() {
-    int count = PanierDao.instance.getModel().size();
-    return String.valueOf(count);
+    return Response
+            .status(200)
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+            .header("Access-Control-Allow-Credentials", "true")
+            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+            .header("Access-Control-Max-Age", "1209600")
+            .entity(Paniers).build();
   }
 
   // Defines that the next path parameter after Paniers is

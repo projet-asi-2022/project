@@ -19,7 +19,12 @@ public class Utilisateur {
 		this.date_naissance = date_naissance;
 		this.panier = new Panier(1); 
 	}
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getNom() {
 		return nom;
 	}

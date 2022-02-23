@@ -62,13 +62,13 @@ public class UtilisateursRessource {
     int count = UtilisateurDao.instance.getModel().size();
     return String.valueOf(count);
   }
-
+  
   // Defines that the next path parameter after Utilisateurs is
   // treated as a parameter and passed to the TodoResources
   // Allows to type http://localhost:8080/rest.todo/rest/todos/1
   // 1 will be treaded as parameter Utilisateur and passed to TodoResource
   @Path("{utilisateur}")
-  public UtilisateurRessource getUtilisateur(@PathParam("Utilisateur") int id) {
+  public UtilisateurRessource getUtilisateur(@PathParam("utilisateur") int id) {
     return new UtilisateurRessource(uriInfo, request, id);
   }
 }

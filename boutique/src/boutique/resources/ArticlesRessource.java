@@ -36,25 +36,35 @@ public class ArticlesRessource {
   // Return the list of Articles to the user in the browser
   @GET
   @Produces(MediaType.TEXT_XML)
-  public List<Article> getArticlesBrowser() {
+  public Response getArticlesBrowser() {
     List<Article> Articles = new ArrayList<Article>();
     Articles.addAll(ArticleDao.instance.getModel().values());
-    return Articles;
+    return Response
+            .status(200)
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+            .header("Access-Control-Allow-Credentials", "true")
+            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+            .header("Access-Control-Max-Age", "1209600")
+            .entity(Articles).build();
   }
 
   // Return the list of Articles for applications
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-  public List<Article> getArticles() {
+  public Response getArticles() {
     List<Article> Articles = new ArrayList<Article>();
     Articles.addAll(ArticleDao.instance.getModel().values());
-    return Articles;
+    return Response
+            .status(200)
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+            .header("Access-Control-Allow-Credentials", "true")
+            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+            .header("Access-Control-Max-Age", "1209600")
+            .entity(Articles).build();
   }
 
-  // returns the number of Articles
-  // Use http://localhost:8080/com.vogella.jersey.Article/rest/Articles/count
-  // rest.Article au lieu de com.vogella.jersey.Article
-  // to get the total number of records
   @GET
   @Path("count")
   @Produces(MediaType.TEXT_PLAIN)
@@ -63,10 +73,6 @@ public class ArticlesRessource {
     return String.valueOf(count);
   }
 
-  // Defines that the next path parameter after articles is
-  // treated as a parameter and passed to the TodoResources
-  // Allows to type http://localhost:8080/rest.todo/rest/todos/1
-  // 1 will be treaded as parameter article and passed to TodoResource
   @Path("{article}")
   public ArticleRessource getArticle(@PathParam("article") int id) {
     return new ArticleRessource(uriInfo, request, id);
