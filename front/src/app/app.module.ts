@@ -20,6 +20,7 @@ import { UserListComponent } from './components/user-articles/list/list.componen
 
 import { AdminComponent } from './admin/admin.component';
 import { AuthComponent } from './auth/auth.component';
+import { ConnexionComponent } from './auth/connexion/connexion.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { AuthComponent } from './auth/auth.component';
     AdminComponent,
     AuthComponent,
     UserDetailsComponent,
-    UserListComponent
+    UserListComponent, 
+    ConnexionComponent
   ],
   imports: [
     CommonModule,
