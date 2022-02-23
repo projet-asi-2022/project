@@ -2,13 +2,13 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticlesService {
 
-  apiUrl: string = 'http://localhost:8080/boutique/rest/articles';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
 
@@ -16,41 +16,41 @@ export class ArticlesService {
 
   // Show lists of item
   list(): Observable<any> {
-    return this.httpClient.get(this.apiUrl).pipe(
+    return this.httpClient.get(environment.api).pipe(
       catchError(this.handleError)
     );
   }
 
   // Create new item
   getItem(id: any): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}/${id}`).pipe(
+    return this.httpClient.get(`${environment.api}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
   create(data: any): Observable<any> {
-    return this.httpClient.post(this.apiUrl, data).pipe(
+    return this.httpClient.post(environment.api, data).pipe(
       catchError(this.handleError)
     );
   }
 
   // Edit/ Update 
   update(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${this.apiUrl}/${id}`, data).pipe(
+    return this.httpClient.put(`${environment.api}/${id}`, data).pipe(
       catchError(this.handleError)
     );
   }
 
   // Delete
   delete(id: any): Observable<any> {
-    return this.httpClient.delete(`${this.apiUrl}/${id}`).pipe(
+    return this.httpClient.delete(`${environment.api}/${id}`).pipe(
       catchError(this.handleError)
     );
   }
 
   // Search By Name
   filterByTitle(title: any): Observable<any> {
-    return this.httpClient.get(`${this.apiUrl}?title_like=${title}`).pipe(
+    return this.httpClient.get(`${environment.api}?title_like=${title}`).pipe(
       catchError(this.handleError)
     );
   }
