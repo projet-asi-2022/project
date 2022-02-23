@@ -33,14 +33,6 @@ public class PaniersRessource {
   @Context
   Request request;
 
-  int id;
-
-  public PaniersRessource(UriInfo uriInfo, Request request, int id) {
-    this.uriInfo = uriInfo;
-    this.request = request;
-    this.id = id;
-  }
-
   // Return the list of Paniers to the user in the browser
   @GET
   @Produces(MediaType.TEXT_XML)
