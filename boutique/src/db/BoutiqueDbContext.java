@@ -56,7 +56,7 @@ public class BoutiqueDbContext {
 			ps = conn.prepareStatement(INSERT_ARTICLE_SQL);
 			ps.setString(1, article.getLibelle());
 			ps.setString(1, article.getMarque());
-			ps.setDouble(1, article.getPrix());
+			ps.setFloat(1, (float)article.getPrix());
 			ps.setLong(1, photoId);
 			ps.setLong(1, categorieId);
 			int numRowsInserted = ps.executeUpdate();
@@ -162,7 +162,7 @@ public class BoutiqueDbContext {
 		long id = 0;
 		try {
 			ps = conn.prepareStatement(INSERT_ROLE_SQL);
-			ps.setString(1, role.getNom());
+			ps.setString(1, role.name());
 			int numRowsInserted = ps.executeUpdate();
 			ResultSet keys = ps.getGeneratedKeys();
 			id = keys.getLong(1);

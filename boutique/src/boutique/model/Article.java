@@ -6,7 +6,6 @@ public class Article {
     private String marque;
     private double prix;
     private Categorie categorie;
-    //private Photo photo;
 	private Photo photo;
     
     public Article(String libelle, String marque, double prix, Categorie categorie, Photo photo) {
