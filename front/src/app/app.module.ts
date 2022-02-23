@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './Pages/home/home.component';
 
 import { PhonesModule } from './modules/phones/phones.module';
@@ -11,29 +11,27 @@ import { StockageModule } from './modules/stockage/stockage.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
-import { CreateComponent } from './components/admin-articles/create/create.component';
+
 import { ArticlesModule } from './Pages/articles/articles.module';
-import { ListComponent } from './components/admin-articles/list/list.component';
-import { DetailsComponent } from './components/admin-articles/details/details.component';
+
 import { UserDetailsComponent } from './components/user-articles/details/details.component';
 import { UserListComponent } from './components/user-articles/list/list.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { AuthComponent } from './auth/auth.component';
-import { ConnexionComponent } from './auth/connexion/connexion.component';
+import { AuthModule } from './auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    CreateComponent,
-    DetailsComponent,
-    ListComponent,
+
     AdminComponent,
     AuthComponent,
     UserDetailsComponent,
-    UserListComponent, 
-    ConnexionComponent
+    UserListComponent,
   ],
   imports: [
     CommonModule,
@@ -42,9 +40,11 @@ import { ConnexionComponent } from './auth/connexion/connexion.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
+    HttpClientModule,
     PhonesModule,
     StockageModule,
-    ArticlesModule,
+    ArticlesModule, //module article(sous module)
+    AuthModule, //module auth (sous module)
   ],
   providers: [],
   bootstrap: [AppComponent],

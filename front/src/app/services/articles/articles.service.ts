@@ -1,13 +1,40 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
+=======
 import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
+>>>>>>> fb81693842cc81a2d52fa1506191e33a22b846a0
 
+import { Observable, Subject, throwError } from 'rxjs';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ArticlesService {
+<<<<<<< HEAD
+  apiUrl: string = 'http://localhost:8080/boutique/rest/articles';
+
+  articlesSubject = new Subject<any[]>();
+
+  private articles = [{}];
+  constructor(private httpClient: HttpClient) {}
+
+  emitArticlesSubject() {
+    this.articlesSubject.next(this.articles.slice());
+  }
+
+  getAllArticlesFromServer() {
+    this.httpClient.get<any[]>(this.apiUrl).subscribe((reponse) => {
+      this.articles = reponse;
+      console.log(reponse);
+    });
+  }
+=======
 
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -67,4 +94,5 @@ export class ArticlesService {
     return throwError(
       'Something bad happened; please try again later.');
   };
+>>>>>>> fb81693842cc81a2d52fa1506191e33a22b846a0
 }
