@@ -9,10 +9,12 @@ import { ConnexionComponent } from './auth/connexion/connexion.component';
 import { PhonesModule } from './modules/phones/phones.module';
 import { StockageModule } from './modules/stockage/stockage.module';
 import { FormsModule } from '@angular/forms';
-import { CreateComponent } from './components/create/create.component';
-import { DetailsComponent } from './components/details/details.component';
-import { ListComponent } from './components/list/list.component';
+import { CreateComponent } from './components/admin-articles/create/create.component';
 import { ArticlesModule } from './Pages/articles/articles.module';
+import { ListComponent } from './components/admin-articles/list/list.component';
+import { DetailsComponent } from './components/admin-articles/details/details.component';
+import { UserDetailsComponent } from './components/user-articles/details/details.component';
+import { UserListComponent } from './components/user-articles/list/list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ArticlesModule } from './Pages/articles/articles.module';
     CreateComponent,
     DetailsComponent,
     ListComponent,
+    UserDetailsComponent,
+    UserListComponent
   ],
   imports: [
     FormsModule,
