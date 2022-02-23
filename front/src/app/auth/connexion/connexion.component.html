@@ -1,4 +1,4 @@
-<form #connexionForm="ngForm" (ngSubmit)="connexion(connexionForm)">
+<!--<form #connexionForm="ngForm" (ngSubmit)="connexion(connexionForm)">
   <div class="row mb—3" style="width: 569px">
     <label for="inputEmai13" class="col-sm—2 col—formrlabel">Email</label>
     <div class="col—sm—1a">
@@ -22,3 +22,27 @@
   </div>
   <button type="submit" class="btn btn—primary" [disabled]="formControls['invalid']">Log in</button>
 </form>
+-->
+<h1 style="text-align:center">
+  Angular 10 Auth Example
+</h1>
+<div class="login">
+  <h2 class="login-header">Log in</h2>
+  <form [formGroup]="loginForm" class="login-container" (ngSubmit)="connexion()">
+    <p [ngClass]="{ 'has-error': isSubmitted && formControls['email'].errors }">
+      <input type="email" placeholder="Email" formControlName="email">
+    </p>
+    <div *ngIf="isSubmitted && formControls['email'].errors" class="help-block">
+      <div *ngIf="formControls['email'].errors?.['required']">Email is required</div>
+    </div>
+    <p [ngClass]="{ 'has-error': isSubmitted && formControls['password'].errors }">
+      <input type="password" placeholder="Password" formControlName="password">
+    </p>
+    <div *ngIf="isSubmitted && formControls['password'].errors" class="help-block">
+      <div *ngIf="formControls['password'].errors?.['required']">Password is required</div>
+    </div>
+    <p>
+      <input type="submit" value="Log in">
+    </p>
+  </form>
+</div>
