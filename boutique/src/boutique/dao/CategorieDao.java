@@ -10,8 +10,9 @@ public enum CategorieDao {
   private Map<Integer, Categorie> contentProvider = new HashMap<>();
 
   private CategorieDao() {
-    Categorie accessoires = new Categorie("Accessoires ordinateurs");
+    Categorie accessoires = new Categorie(1, "Accessoires ordinateurs");
     contentProvider.put(1, accessoires);
+    System.out.println(accessoires);
   }
 
   public Map<Integer, Categorie> getModel() {

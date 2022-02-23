@@ -75,8 +75,8 @@ public class CategoriesRessource {
   // treated as a parameter and passed to the TodoResources
   // Allows to type http://localhost:8080/rest.todo/rest/todos/1
   // 1 will be treaded as parameter Categorie and passed to TodoResource
-  @Path("{Categorie}")
-  public CategoriesRessource getCategorie(@PathParam("Categorie") int id) {
-    return new CategoriesRessource(uriInfo, request, id);
+  @Path("{categorie}")
+  public CategorieRessource getCategorie(@PathParam("categorie") int id) {
+    return new CategorieRessource(uriInfo, request, id);
   }
 }

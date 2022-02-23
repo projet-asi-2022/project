@@ -14,10 +14,9 @@ const routes: Routes = [
   {
     path: 'articles',
     component: ArticleComponent,
-    pathMatch: 'full',
     children: [
       { path: 'list', component: ListComponent },
-      { path: ':id', component: DetailsComponent },
+      { path: 'id', component: DetailsComponent },
       { path: 'add', component: CreateComponent },
     ],
   },

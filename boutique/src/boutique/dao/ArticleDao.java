@@ -12,7 +12,7 @@ public enum ArticleDao {
 
     private ArticleDao() {
     	
-    	Categorie accessoires = new Categorie("Accessoires ordinateurs");
+    	Categorie accessoires = new Categorie(1, "Accessoires ordinateurs");
     	
         Article souris = new Article(1, "Souris gaming XG5600XXXBG", "LOGIMEGATECH", 250, accessoires);
         // String libelle, String marque, float prix, Categorie categorie, Photo photo

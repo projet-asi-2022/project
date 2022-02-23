@@ -75,8 +75,8 @@ public class PaniersRessource {
   // treated as a parameter and passed to the TodoResources
   // Allows to type http://localhost:8080/rest.todo/rest/todos/1
   // 1 will be treaded as parameter Panier and passed to TodoResource
-  @Path("{Panier}")
-  public PaniersRessource getPanier(@PathParam("Panier") int id) {
-    return new PaniersRessource(uriInfo, request, id);
+  @Path("{panier}")
+  public PanierRessource getPanier(@PathParam("panier") int id) {
+    return new PanierRessource(uriInfo, request, id);
   }
 }
