@@ -1,11 +1,11 @@
 package boutique.model;
 
 public class Administrateur {
-	public void créationArticle() {};
+	public void creationArticle() {};
 	public void modificationArticle(){}; 
 	public void suppressionArticle(){};
 	public void affichageArticle(){};
-	public void créationCatégorie(){};
-	public void modificationCatégorie(){};
-	public void suppressionCatégorie(){};
+	public void creationCategorie(){};
+	public void modificationCategorie(){};
+	public void suppressionCategorie(){};
 }
