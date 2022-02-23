@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { ConnexionComponent } from './auth/connexion/connexion.component';
 import { PhonesModule } from './modules/phones/phones.module';
