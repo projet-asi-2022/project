@@ -11,6 +11,8 @@ local.properties
 .recommenders
 RemoteSystemsTempFiles/
 
+*.db
+
 *.class
 
 .idea/
