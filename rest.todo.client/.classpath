@@ -23,5 +23,6 @@
 	<classpathentry kind="lib" path="lib/jersey-media-json-jackson-2.27.jar"/>
 	<classpathentry kind="lib" path="lib/junit-4.11.jar"/>
 	<classpathentry kind="lib" path="lib/osgi-resource-locator-1.0.1.jar"/>
+	<classpathentry kind="lib" path="/boutique/libs/jboss-jaxb-api_2.3_spec-2.0.0.Final.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,6 +1,13 @@
 package boutique.model;
 
-public enum Role {
-	ADMIN,
-	USER
+public class Role {
+	private String nom;
+	
+	public Role(String nom) {
+		this.nom = nom;
+	}
+	
+	public String getNom() {
+		return nom;
+	}
 }
