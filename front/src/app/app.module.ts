@@ -21,7 +21,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { PanierComponent } from './Pages/panier/panier.component';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,10 +33,12 @@ import { HttpClientModule } from '@angular/common/http';
     AuthComponent,
     UserDetailsComponent,
     UserListComponent,
+    PanierComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
+    MatIconModule,
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,

@@ -73,4 +73,12 @@ public class PaniersRessource {
   public PanierRessource getPanier(@PathParam("panier") int id) {
     return new PanierRessource(uriInfo, request, id);
   }
+  
+  @Path("add")
+  @POST
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.TEXT_PLAIN)
+  public void createPanier(Panier panier) {
+      System.out.print(panier.getId());
+  }
 }

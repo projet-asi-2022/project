@@ -92,4 +92,11 @@ public class ArticlesRessource {
   public ArticleRessource getArticle(@PathParam("article") int id) {
     return new ArticleRessource(uriInfo, request, id);
   }
+  @Path("add")
+  @POST
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.TEXT_PLAIN)
+  public void createArticle(Article article) {
+      System.out.print(article.getLibelle());
+  }
 }

@@ -45,12 +45,11 @@ class BoutiqueTests {
 		Photo photo = new Photo(1050, "defautUrl");
 		Categorie categorie = new Categorie("Categorie A");
 		
-		Article article = new Article(
+		Article article = new Article(1,
 				"Libelle A", 
 				"Marque A", 
 				100, 
-				categorie, 
-				photo);
+				categorie);
 		
 		long id = ctx.insertArticle(article);
 		assertEquals(1, id);

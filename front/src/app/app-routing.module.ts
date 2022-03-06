@@ -10,18 +10,30 @@ import { UserListComponent } from './components/user-articles/list/list.componen
 import { ConnexionComponent } from './auth/connexion/connexion.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './auth.guard';
+import { PanierComponent } from './Pages/panier/panier.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'connexion', component: ConnexionComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'panier', component: PanierComponent },
 
   {
     path: 'articles',
     component: ArticleComponent,
     children: [
-      { path: 'list', component: UserListComponent },
-      { path: 'id', component: UserDetailsComponent },
+      {
+        path: 'PcBureau',
+        component: UserListComponent,
+      },
+      {
+        path: 'Accessoires',
+        component: UserListComponent,
+      },
+      {
+        path: ':id',
+        component: UserDetailsComponent,
+      },
     ],
   },
   // Eager loading :

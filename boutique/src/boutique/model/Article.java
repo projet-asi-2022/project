@@ -8,13 +8,17 @@ public class Article {
     private Categorie categorie;
 	private Photo photo;
     
-    public Article(String libelle, String marque, double prix, Categorie categorie) {
+    public Article(int id,String libelle, String marque, double prix, Categorie categorie) {
+    	this.id=id;
 		this.libelle = libelle;
 		this.marque = marque;
 		this.prix = prix;
 		this.categorie = categorie;
-		this.photo = photo;
+		this.photo = null;
 	}
+    public Article() { 
+    } 
+	
 	
 	public String getLibelle() {
 		return this.libelle;

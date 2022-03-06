@@ -5,6 +5,10 @@ public class Boutique {
 	private String adresse; 
 	private String contact;
 	
+	
+	public Boutique() {
+		
+	}
 	public String getDescription() {
 		return description;
 	}

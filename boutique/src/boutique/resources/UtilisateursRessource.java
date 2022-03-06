@@ -71,4 +71,14 @@ public class UtilisateursRessource {
   public UtilisateurRessource getUtilisateur(@PathParam("utilisateur") int id) {
     return new UtilisateurRessource(uriInfo, request, id);
   }
+  
+  @Path("add")
+  @POST
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.TEXT_PLAIN)
+  public void createUser(Utilisateur user) {
+      System.out.print(user.getPrenom());
+      
+  }
+  
 }

@@ -7,27 +7,21 @@ public class Utilisateur {
 	private String email ; 
 	private String password; 
 	private String dateNaissance ; 
-	private Panier panier ;
+
 	public Role role ; 
 	
-	public Utilisateur(String nom, String prenom, String email, String password, String dateNaissance, Panier panier) {
+	public Utilisateur(int id,String nom, String prenom, String email, String password, String dateNaissance,Role role) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.password = password;
 		this.dateNaissance = dateNaissance;
-		this.panier = panier;
+		this.role = role;
+	}
+	public Utilisateur() {
+		
 	}
 	
-	public Utilisateur(int id, String nom, String prenom, String email, String password, String dateNaissance, Panier panier) {
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.password = password;
-		this.dateNaissance = dateNaissance;
-		this.panier = panier;
-	}
 	public int getId() {
 		return id;
 	}
@@ -72,14 +66,7 @@ public class Utilisateur {
 		this.dateNaissance = date_naissance;
 	}
 	
-	public Panier getPanier() {
-		return panier;
-	}
-	
-	public void setPanier(Panier panier) {
-		this.panier = panier;
-	} 
-	
+
 	public void setRole(Role role) {
 		this.role = role;
 	}
