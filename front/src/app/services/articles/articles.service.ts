@@ -21,9 +21,10 @@ export class ArticlesService {
     this.articlesSubject.next(this.articles.slice());
   }
 
-  getAllArticlesFromServer() {
+  async getAllArticlesFromServer() {
     this.httpClient.get<any[]>(this.apiUrl).subscribe((reponse) => {
       this.articles = reponse;
+      this.emitArticlesSubject();
       console.log(reponse);
     });
   }
