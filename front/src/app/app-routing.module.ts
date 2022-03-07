@@ -8,6 +8,7 @@ import { UserDetailsComponent } from './components/user-articles/details/details
 import { UserListComponent } from './components/user-articles/list/list.component';
 
 import { ConnexionComponent } from './auth/connexion/connexion.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './auth.guard';
 import { PanierComponent } from './Pages/panier/panier.component';
@@ -15,6 +16,7 @@ import { PanierComponent } from './Pages/panier/panier.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'connexion', component: ConnexionComponent },
+  { path: 'inscription', component: RegisterComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: 'panier', component: PanierComponent },
 

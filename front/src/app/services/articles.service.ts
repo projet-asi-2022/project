@@ -8,10 +8,11 @@ import { catchError } from 'rxjs/operators';
 import { Observable, Subject, throwError } from 'rxjs';
 import { Article } from '../models/articles.model';
 import { Categorie } from '../models/categories.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class ArticlesService {
-  apiUrl: string = 'http://localhost:8080/boutique/rest/articles';
+  apiUrl: string = environment.api+'articles';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   articlesSubject = new Subject<any[]>();
 
