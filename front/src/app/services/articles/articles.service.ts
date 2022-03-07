@@ -6,14 +6,13 @@ import {
 import { Injectable } from '@angular/core';
 
 import { Observable, Subject, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment';
-
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticlesService {
-  apiUrl: string = environment.api+'articles';
+  apiUrl: string = environment.api + 'articles';
 
   articlesSubject = new Subject<any[]>();
 
