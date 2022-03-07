@@ -31,6 +31,10 @@ const routes: Routes = [
         component: UserListComponent,
       },
       {
+        path: 'PcPortable',
+        component: UserListComponent,
+      },
+      {
         path: ':id',
         component: UserDetailsComponent,
       },

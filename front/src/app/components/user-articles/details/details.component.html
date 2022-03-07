@@ -1,1 +1,21 @@
-<p></p>
+<div class="container">
+  <h1> {{article.libelle}}</h1>
+  <div class="row">
+<div class="col-2"> 
+  <img src="https://www.lizardfootwear.com/_ui/responsive/common/images/no-product-image-available.png" class="card-img-top" alt="...">
+</div>
+<div class="col-6"> 
+    <p>Description: </p>
+  </div>
+</div>
+<br/>
+<div class="row">
+
+<mat-icon>edit</mat-icon>
+<mat-icon (click)="delete(article.id)">delete</mat-icon></div>
+<div class="row">
+  <div class="col-md-3 ms-md-auto">
+    <button class="btn-success">Ajouter au panier</button></div>
+</div>
+ 
+</div>

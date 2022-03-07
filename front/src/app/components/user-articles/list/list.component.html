@@ -1,4 +1,15 @@
+<div class="container">
+
+
 <h1>{{categorie}}</h1>
-<ul>
-    <li *ngFor="let article of articles">{{ article.libelle }}</li>
-</ul>
+
+
+<div class="row">
+  <div class="card" style="width: 18rem;margin: 10px;" *ngFor="let article of articles">
+    <img src="https://www.lizardfootwear.com/_ui/responsive/common/images/no-product-image-available.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ article.libelle }}</h5>
+      <p class="card-text">Description: </p>
+      <a href="#" class="btn btn-primary"   [routerLink]="['/articles', article.id]">Details</a>
+    </div>
+  </div></div>
