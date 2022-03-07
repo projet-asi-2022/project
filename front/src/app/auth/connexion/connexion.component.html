@@ -1,46 +1,25 @@
-<!--<form #connexionForm="ngForm" (ngSubmit)="connexion(connexionForm)">
-  <div class="row mb—3" style="width: 569px">
-    <label for="inputEmai13" class="col-sm—2 col—formrlabel">Email</label>
-    <div class="col—sm—1a">
-      <input type="email" class="form-control" id="inputEmai13" name="email" #email="ngModel" ngModel email required>
-      <div class="alert alert—danger" *ngIf="formControls['email'].errors?.['required'] && formControls['touched']" role="alert">
-        Email required!
-      </div>
-    </div>
-  </div>
-  <div class="row mb—3" style="width: 500px">
-    <label for="inputPassword3" class="col—sm—2 col—form-label">Password</label>
-    <div class="col—sm—1a">
-      <input type="password" class="form—C0ntrol" id="inputPassword3" name="pass" #pass="ngModel" ngModel required minlength="8">
-      <div Class="alert alert—danger" *ngIF="messageError" role="alert">
-        {{messageError}}
-      </div>
-      <div class="alert alert—danger" *ngIF="pass.errors?.mimlength && pass.touched" role="alert">
-        minlength required!
-      </div>
-    </div>
-  </div>
-  <button type="submit" class="btn btn—primary" [disabled]="formControls['invalid']">Log in</button>
-</form>
--->
+
 <h1 style="text-align:center">
-  Angular 10 Auth Example
+  Connexion à la boutique
 </h1>
 <div class="login">
   <h2 class="login-header">Log in</h2>
   <form [formGroup]="loginForm" class="login-container" (ngSubmit)="connexion()">
+
     <p [ngClass]="{ 'has-error': isSubmitted && formControls['email'].errors }">
       <input type="email" placeholder="Email" formControlName="email">
     </p>
     <div *ngIf="isSubmitted && formControls['email'].errors" class="help-block">
       <div *ngIf="formControls['email'].errors?.['required']">Email is required</div>
     </div>
+
     <p [ngClass]="{ 'has-error': isSubmitted && formControls['password'].errors }">
       <input type="password" placeholder="Password" formControlName="password">
     </p>
     <div *ngIf="isSubmitted && formControls['password'].errors" class="help-block">
       <div *ngIf="formControls['password'].errors?.['required']">Password is required</div>
     </div>
+
     <p>
       <input type="submit" value="Log in">
     </p>
