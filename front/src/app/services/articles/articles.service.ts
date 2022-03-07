@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ArticlesService {
-  apiUrl: string = environment.apiUrl+'articles';
+  apiUrl: string = environment.api+'articles';
 
   articlesSubject = new Subject<any[]>();
 

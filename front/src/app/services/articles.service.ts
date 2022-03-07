@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class ArticlesService {
-  apiUrl: string = environment.apiUrl+'articles';
+  apiUrl: string = environment.api+'articles';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   articlesSubject = new Subject<any[]>();
 
