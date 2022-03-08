@@ -39,7 +39,7 @@ public class ArticlesRessource {
   // Return the list of Articles to the user in the browser
   @GET
   @Produces(MediaType.TEXT_XML)
-  public Response getArticlesBrowser() {
+  public ArrayList<Article> getArticlesBrowser() {
     return ctx.getArticles();
   }
 
@@ -60,7 +60,7 @@ public class ArticlesRessource {
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.TEXT_PLAIN)
   public void createArticle(Article article) {
+      System.out.print(article.getId());
 	  ctx.insertArticle(article);
-      System.out.print(article.getLibelle());
   }
 }

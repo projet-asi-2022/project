@@ -114,4 +114,12 @@ class BoutiqueTests {
 	}
 	
 	
+	
+	@Test
+	public void deleteArticle() {
+		long id = ctx.deleteArticle(1);
+		assertEquals(1,id);
+	}
+	
+	
 }

@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Panier {
 	private boolean confirme; 
-	private Utilisateur user;
 	private int id;
 	private Utilisateur user;
     private List<Article> articles = new ArrayList<>();

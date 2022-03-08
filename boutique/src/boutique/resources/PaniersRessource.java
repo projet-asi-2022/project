@@ -39,14 +39,14 @@ public class PaniersRessource {
   // Return the list of Paniers to the user in the browser
   @GET
   @Produces(MediaType.TEXT_XML)
-  public Response getPaniersBrowser() {
+  public ArrayList<Panier> getPaniersBrowser() {
     return ctx.getPaniers();
   }
 
   // Return the list of Paniers for applications
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-  public Response getPaniers() {
+  public ArrayList<Panier> getPaniers() {
     return ctx.getPaniers() ; 
   }
 
