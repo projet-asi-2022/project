@@ -9,14 +9,7 @@ public class Boutique {
 	public Boutique() {
 		
 	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-		this.adresse = adresse;
-		this.contact = contact;
-	}
+
 	
 	public String getDescription() {
 		return description;

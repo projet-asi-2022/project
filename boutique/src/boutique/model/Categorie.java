@@ -11,9 +11,7 @@ public class Categorie {
 		this.nom = nom;
 	}
 	
-	public Categorie() {
-		
-	}
+
 
 	public Categorie(Integer id, String nom) {
 		this.id = id;

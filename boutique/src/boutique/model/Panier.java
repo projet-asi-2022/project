@@ -7,7 +7,6 @@ public class Panier {
 	private boolean confirme; 
 	private Utilisateur user;
 	private int id;
-	private Utilisateur user;
     private List<Article> articles = new ArrayList<>();
 	private Double prixTotal(){return this.articles.stream().mapToDouble(a -> a.getPrix()).reduce(0, Double::sum);}
 	
@@ -42,13 +41,7 @@ public class Panier {
 		this.articles.remove(n);
 	}
 	
-	public Utilisateur getUser() {
-		return user;
-	}
 
-	public void setUser(Utilisateur user) {
-		this.user = user;
-	}
 
 	public int getId() {
 		// TODO Auto-generated method stub
