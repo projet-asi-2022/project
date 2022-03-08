@@ -103,7 +103,6 @@ class BoutiqueTests {
 	@Test
 	public void insertBoutique() {
 		Boutique boutique = new Boutique("description", "myAdresse", "myContact");
-		
 		long id = ctx.insertBoutique(boutique);
 		assertEquals(1, id);
 	}
@@ -113,5 +112,6 @@ class BoutiqueTests {
 		Photo photo = ctx.getPhoto(1);
 		assertNotNull(photo);
 	}
+	
 	
 }

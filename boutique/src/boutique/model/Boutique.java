@@ -5,17 +5,14 @@ public class Boutique {
 	private String adresse; 
 	private String contact;
 	
-	
-	public Boutique() {
-		
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
+	public Boutique(String description, String adresse, String contact) {
 		this.description = description;
 		this.adresse = adresse;
 		this.contact = contact;
+	}
+	
+	public Boutique() {
+		
 	}
 	
 	public String getDescription() {

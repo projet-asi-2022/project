@@ -11,9 +11,7 @@ public class Photo {
 		this.size = size;
 		this.url = url;
 	}
-	public Photo() {
-	
-	}
+
 	public float getSize() {
 		return size;
 	}
