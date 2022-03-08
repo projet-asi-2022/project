@@ -54,30 +54,4 @@ public class UtilisateurRessource {
     );
     return Utilisateur;
   }
-
-  @PUT
-  @Consumes(MediaType.APPLICATION_XML)
-  public Response putUtilisateur(JAXBElement<Utilisateur> Utilisateur) {
-    Utilisateur c = Utilisateur.getValue();
-    return putAndGetResponse(c);
-  }
-
-  @DELETE
-  public void deleteUtilisateur() {
-    Utilisateur c = ctx.deleteUtilisateur(id);
-    if (c == null) throw new RuntimeException(
-      "Delete: Utilisateur with " + id + " not found"
-    );
-  }
-
-  private Response putAndGetResponse(Utilisateur Utilisateur) {
-    Response res;
-    if (UtilisateurDao.instance.getModel().containsKey(Utilisateur.getId())) {
-      res = Response.noContent().build();
-    } else {
-      res = Response.created(uriInfo.getAbsolutePath()).build();
-    }
-    UtilisateurDao.instance.getModel().put(Utilisateur.getId(), Utilisateur);
-    return res;
-  }
 }

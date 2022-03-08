@@ -65,14 +65,6 @@ public class PanierRessource {
     return putAndGetResponse(c);
   }
 
-  @DELETE
-  public void deletePanier() {
-    Panier c = ctx.deletePanier(id);
-    if (c == null) throw new RuntimeException(
-      "Delete: Panier with " + id + " not found"
-    );
-  }
-
   private Response putAndGetResponse(Panier Panier) {
     Response res;
     if (PanierDao.instance.getModel().containsKey(Panier.getId())) {
