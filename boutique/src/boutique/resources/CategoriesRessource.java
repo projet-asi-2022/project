@@ -39,14 +39,14 @@ public class CategoriesRessource {
   // Return the list of Categories to the user in the browser
   @GET
   @Produces(MediaType.TEXT_XML)
-  public Response getCategoriesBrowser() {
+  public ArrayList<Categorie> getCategoriesBrowser() {
     return ctx.getCategories();
   }
 
   // Return the list of Categories for applications
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-  public Response getCategories() {
+  public ArrayList<Categorie> getCategories() {
     return ctx.getCategories();
   }
 

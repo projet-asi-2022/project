@@ -57,7 +57,7 @@ public class PanierRessource {
     );
     return Panier;
   }
- 
+ /*
   @PUT
   @Consumes(MediaType.APPLICATION_XML)
   public Response putPanier(JAXBElement<Panier> Panier) {
@@ -74,5 +74,5 @@ public class PanierRessource {
     }
     PanierDao.instance.getModel().put(Panier.getId(), Panier);
     return res;
-  }
+  }*/
 }

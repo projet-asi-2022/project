@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Panier {
 	private boolean confirme; 
-	private Utilisateur user;
 	private int id;
     private List<Article> articles = new ArrayList<>();
 	private Double prixTotal(){return this.articles.stream().mapToDouble(a -> a.getPrix()).reduce(0, Double::sum);}

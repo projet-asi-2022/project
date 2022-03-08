@@ -27,6 +27,8 @@ public class BoutiqueDbContext {
 	private static final String INSERT_UTILISATEUR_SQL = "INSERT INTO Utilisateur(nom, prenom, email, idRole, dateNaissance) VALUES(?, ?, ?, ?, ?)";
 	private static final String INSERT_ARTICLE_SQL = "INSERT INTO Article(libelle, marque, prix, idPhoto, idCategorie) VALUES(?, ?, ?, ?, ?)";
 	
+	private static final String DELETE_ARTICLE_BY_ID_SQL = "DELETE * FROM Article WHERE id = ?";
+	
 	private static final String GET_PHOTO_BY_ID_SQL = "SELECT * FROM Photo WHERE id = ?";
 	private static final String GET_ARTICLE_BY_ID_SQL = "SELECT * FROM Article WHERE id = ?";
 	private static final String GET_CATEGORIE_BY_ID_SQL = "SELECT * FROM Categorie WHERE id = ?";
@@ -226,6 +228,22 @@ public class BoutiqueDbContext {
 			close(ps);
 		}
 		return id;
+	}
+	
+	public long deleteArticle(int id) {
+		PreparedStatement ps = null;
+		try {			
+			ps = conn.prepareStatement(DELETE_ARTICLE_BY_ID_SQL);
+			ResultSet rs = ps.executeQuery();
+			return id ;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			close(ps);
+		}
+		return 11;
 	}
 	
 	public Photo getPhoto(int id) {

@@ -11,8 +11,6 @@ public class Categorie {
 		this.nom = nom;
 	}
 	
-
-
 	public Categorie(Integer id, String nom) {
 		this.id = id;
 		this.nom = nom;

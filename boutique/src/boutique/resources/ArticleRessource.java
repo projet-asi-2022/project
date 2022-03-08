@@ -56,20 +56,20 @@ public class ArticleRessource {
   	 ;
   }
 
+  /*
   @PUT
   @Consumes(MediaType.APPLICATION_XML)
   public Response putArticle(JAXBElement<Article> Article) {
     Article c = Article.getValue();
     return putAndGetResponse(c);
-  }
+  }*/
 
   @DELETE
   @Produces({ MediaType.APPLICATION_JSON })
   public void deleteArticle() {
-   Article c = ctx.deleteArticle(id);  
-   
+   ctx.deleteArticle(id);  
   }
-
+/*
   private Response putAndGetResponse(Article Article) {
     Response res;
     if (ArticleDao.instance.getModel().containsKey(Article.getId())) {
@@ -79,5 +79,5 @@ public class ArticleRessource {
     }
     ArticleDao.instance.getModel().put(Article.getId(), Article);
     return res;
-  }
+  }*/
 }
