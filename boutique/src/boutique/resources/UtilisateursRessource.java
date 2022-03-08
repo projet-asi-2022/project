@@ -5,6 +5,8 @@ import boutique.model.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -70,6 +72,15 @@ public class UtilisateursRessource {
   @Path("{utilisateur}")
   public UtilisateurRessource getUtilisateur(@PathParam("utilisateur") int id) {
     return new UtilisateurRessource(uriInfo, request, id);
+  }
+  
+  @Path("{utilisateur}/panier")
+  public PanierRessource getPanierByUtilisateur(@PathParam("utilisateur") int idUser) {
+	  //rechercher le panier avec le bon l'id user
+	  List<Panier> paniers = new ArrayList<Panier>();
+	  paniers.addAll(PanierDao.instance.getModel().values());
+	  Optional<Panier> p = paniers.stream().filter(user -> user.getId() == idUser).findFirst();
+	  return new PanierRessource(uriInfo, request, p.get().getUser().getId());
   }
   
   @Path("add")

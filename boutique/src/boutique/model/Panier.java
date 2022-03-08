@@ -77,13 +77,5 @@ public class Panier {
 		this.confirme = confirme;
 	}
 
-	public Utilisateur getUser() {
-		return user;
-	}
-
-	public void setUser(Utilisateur user) {
-		this.user = user;
-	}
-
 
 }
