@@ -23,6 +23,8 @@ import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PanierComponent } from './Pages/panier/panier.component';
 import { MatIconModule } from '@angular/material/icon';
+import { UpdateArticleComponent } from './Pages/update-article/update-article.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,7 @@ import { MatIconModule } from '@angular/material/icon';
     UserDetailsComponent,
     UserListComponent,
     PanierComponent,
+    UpdateArticleComponent,
   ],
   imports: [
     CommonModule,

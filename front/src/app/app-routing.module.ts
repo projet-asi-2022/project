@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './Pages/home/home.component';
@@ -12,6 +12,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './auth.guard';
 import { PanierComponent } from './Pages/panier/panier.component';
+import { UpdateArticleComponent } from './Pages/update-article/update-article.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'inscription', component: RegisterComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: 'panier', component: PanierComponent },
-
+  { path: 'articles/:id/update', component: UpdateArticleComponent },
   {
     path: 'articles',
     component: ArticleComponent,

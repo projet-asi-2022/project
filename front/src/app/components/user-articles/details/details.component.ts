@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ArticlesService } from 'src/app/services/articles/articles.service';
+import { PanierService } from 'src/app/services/panier/panier.service';
 
 @Component({
   selector: 'app-details',
@@ -13,10 +15,12 @@ export class UserDetailsComponent implements OnInit {
   message = '';
   apiUrl: string = 'http://localhost:8080/boutique/rest/articles';
   article: any;
+
   constructor(
     private httpClient: HttpClient,
     private route: ActivatedRoute,
-    private articleService: ArticlesService
+    private articleService: ArticlesService,
+    private panierService: PanierService
   ) {}
 
   ngOnInit(): void {
@@ -31,5 +35,9 @@ export class UserDetailsComponent implements OnInit {
   delete(id: number) {
     console.log('test');
     this.articleService.deleteArticle(id);
+  }
+
+  addToPanier() {
+    this.panierService.addInPanier(this.article);
   }
 }

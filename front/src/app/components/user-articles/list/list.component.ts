@@ -24,19 +24,25 @@ export class UserListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.articles = [];
     console.log(this.route.url);
+    if (this.route.url === '/articles/PcBureau') {
+      this.categorie = 'PcBureau';
+    }
+    if (this.route.url === '/articles/Accessoires') {
+      this.categorie = 'Accessoires';
+    }
+    if (this.route.url === '/articles/PcPortable') {
+      this.categorie = 'Pc Portables';
+    }
 
     this.articlesSub = this.articlesService.articlesSubject.subscribe(
       (data) => {
         if (this.route.url === '/articles/PcBureau') {
-          this.categorie = 'PcBureau';
           this.articles = data.filter((x) => x.categorie.nom == 'PcBureau');
         }
         if (this.route.url === '/articles/Accessoires') {
-          this.categorie = 'Accessoires';
           this.articles = data.filter((x) => x.categorie.nom == 'Accessoires');
         }
         if (this.route.url === '/articles/PcPortable') {
-          this.categorie = 'Pc Portables';
           this.articles = data.filter((x) => x.categorie.nom == 'PcPortable');
         }
       }

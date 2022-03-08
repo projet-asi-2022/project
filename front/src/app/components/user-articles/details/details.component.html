@@ -11,11 +11,11 @@
 <br/>
 <div class="row">
 
-<mat-icon>edit</mat-icon>
+<mat-icon [routerLink]="['/articles', 1,'/update']">edit</mat-icon>
 <mat-icon (click)="delete(article.id)">delete</mat-icon></div>
 <div class="row">
   <div class="col-md-3 ms-md-auto">
-    <button class="btn-success">Ajouter au panier</button></div>
+    <button class="btn-success" (click)="addToPanier()">Ajouter au panier</button></div>
 </div>
  
 </div>
