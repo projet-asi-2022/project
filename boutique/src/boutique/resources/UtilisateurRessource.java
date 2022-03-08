@@ -1,7 +1,8 @@
 package boutique.resources;
 
-import boutique.dao.UtilisateurDao;
 import boutique.model.Utilisateur;
+import db.BoutiqueDbContext;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,6 +17,8 @@ import javax.xml.bind.JAXBElement;
 
 public class UtilisateurRessource {
 
+	private BoutiqueDbContext ctx = new BoutiqueDbContext();
+	
   @Context
   UriInfo uriInfo;
 
@@ -34,7 +37,7 @@ public class UtilisateurRessource {
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
   public Utilisateur getUtilisateur() {
-    Utilisateur Utilisateur = UtilisateurDao.instance.getModel().get(id);
+    Utilisateur Utilisateur = ctx.getUtilisateur(id);
     if (Utilisateur == null) throw new RuntimeException(
       "Get: Utilisateur with " + id + " not found"
     );
@@ -45,7 +48,7 @@ public class UtilisateurRessource {
   @GET
   @Produces(MediaType.TEXT_XML)
   public Utilisateur getUtilisateurHTML() {
-    Utilisateur Utilisateur = UtilisateurDao.instance.getModel().get(id);
+    Utilisateur Utilisateur = ctx.getUtilisateur(id);
     if (Utilisateur == null) throw new RuntimeException(
       "Get: Utilisateur with " + id + " not found"
     );
@@ -61,7 +64,7 @@ public class UtilisateurRessource {
 
   @DELETE
   public void deleteUtilisateur() {
-    Utilisateur c = UtilisateurDao.instance.getModel().remove(id);
+    Utilisateur c = ctx.deleteUtilisateur(id);
     if (c == null) throw new RuntimeException(
       "Delete: Utilisateur with " + id + " not found"
     );

@@ -1,7 +1,8 @@
 package boutique.resources;
 
-import boutique.dao.ArticleDao;
 import boutique.model.Article;
+import db.BoutiqueDbContext;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,6 +17,8 @@ import javax.xml.bind.JAXBElement;
 
 public class ArticleRessource {
 
+	private BoutiqueDbContext ctx = new BoutiqueDbContext();
+	
   @Context
   UriInfo uriInfo;
 
@@ -34,7 +37,7 @@ public class ArticleRessource {
   @GET
   @Produces({ MediaType.APPLICATION_JSON })
   public Article getArticle() {
-    Article Article = ArticleDao.instance.getModel().get(id);
+    Article Article = ctx.getArticle(id);
     if (Article == null) throw new RuntimeException(
       "Get: Article with " + id + " not found"
     );
@@ -45,7 +48,7 @@ public class ArticleRessource {
   @GET
   @Produces(MediaType.TEXT_XML)
   public Article getArticleHTML() {
-    Article Article = ArticleDao.instance.getModel().get(id);
+    Article Article = ctx.getArticle(id);
     if (Article == null) throw new RuntimeException(
       "Get: Article with " + id + " not found"
     );
@@ -63,9 +66,7 @@ public class ArticleRessource {
   @DELETE
   @Produces({ MediaType.APPLICATION_JSON })
   public void deleteArticle() {
-   // Article c = ArticleDao.instance.getModel().remove(id);
-    System.out.print("oue oue oue");
-    
+   Article c = ctx.deleteArticle(id);  
    
   }
 

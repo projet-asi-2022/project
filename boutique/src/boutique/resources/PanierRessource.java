@@ -1,6 +1,5 @@
 package boutique.resources;
 
-import boutique.dao.PanierDao;
 import boutique.model.Panier;
 import db.BoutiqueDbContext;
 
@@ -18,6 +17,8 @@ import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBElement;
 
 public class PanierRessource {
+	
+	private BoutiqueDbContext ctx = new BoutiqueDbContext();
 	
   @Context
   UriInfo uriInfo;
@@ -39,7 +40,7 @@ public class PanierRessource {
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
   public Panier getPanier() {
-    Panier Panier = PanierDao.instance.getModel().get(id);
+    Panier Panier = ctx.getPanier(id);
     if (Panier == null) throw new RuntimeException(
       "Get: Panier with " + id + " not found"
     );
@@ -50,7 +51,7 @@ public class PanierRessource {
   @GET
   @Produces(MediaType.TEXT_XML)
   public Panier getPanierHTML() {
-    Panier Panier = PanierDao.instance.getModel().get(id);
+    Panier Panier = ctx.getPanier(id);
     if (Panier == null) throw new RuntimeException(
       "Get: Panier with " + id + " not found"
     );
@@ -66,7 +67,7 @@ public class PanierRessource {
 
   @DELETE
   public void deletePanier() {
-    Panier c = PanierDao.instance.getModel().remove(id);
+    Panier c = ctx.deletePanier(id);
     if (c == null) throw new RuntimeException(
       "Delete: Panier with " + id + " not found"
     );
