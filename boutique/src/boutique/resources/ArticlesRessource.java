@@ -2,6 +2,8 @@ package boutique.resources;
 
 import boutique.dao.*;
 import boutique.model.*;
+import db.BoutiqueDbContext;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,8 @@ import javax.xml.bind.JAXBElement;
 @Path("/articles")
 public class ArticlesRessource {
 
+	private BoutiqueDbContext ctx = new BoutiqueDbContext();
+	
   // Allows to insert contextual objects into the class,
   // e.g. ServletContext, Request, Response, UriInfo
   @Context
@@ -77,11 +81,13 @@ public class ArticlesRessource {
   public ArticleRessource getArticle(@PathParam("article") int id) {
     return new ArticleRessource(uriInfo, request, id);
   }
+  
   @Path("add")
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.TEXT_PLAIN)
   public void createArticle(Article article) {
+	  ctx.insertArticle(article);
       System.out.print(article.getLibelle());
   }
 }

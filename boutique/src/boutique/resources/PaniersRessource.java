@@ -2,6 +2,8 @@ package boutique.resources;
 
 import boutique.dao.*;
 import boutique.model.*;
+import db.BoutiqueDbContext;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,9 @@ import javax.xml.bind.JAXBElement;
 
 @Path("/paniers")
 public class PaniersRessource {
-
+	
+	private BoutiqueDbContext ctx = new BoutiqueDbContext();
+	
   // Allows to insert contextual objects into the class,
   // e.g. ServletContext, Request, Response, UriInfo
   @Context
@@ -79,6 +83,7 @@ public class PaniersRessource {
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.TEXT_PLAIN)
   public void createPanier(Panier panier) {
+	  ctx.insertPanier(panier);
       System.out.print(panier.getId());
   }
 }

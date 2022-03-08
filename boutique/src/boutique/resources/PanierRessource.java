@@ -2,6 +2,8 @@ package boutique.resources;
 
 import boutique.dao.PanierDao;
 import boutique.model.Panier;
+import db.BoutiqueDbContext;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,7 +18,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBElement;
 
 public class PanierRessource {
-
+	
   @Context
   UriInfo uriInfo;
 

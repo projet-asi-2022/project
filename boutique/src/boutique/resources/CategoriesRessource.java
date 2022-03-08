@@ -2,6 +2,8 @@ package boutique.resources;
 
 import boutique.dao.*;
 import boutique.model.*;
+import db.BoutiqueDbContext;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,8 @@ import javax.xml.bind.JAXBElement;
 
 @Path("/categories")
 public class CategoriesRessource {
+	
+	private BoutiqueDbContext ctx = new BoutiqueDbContext();
 
   // Allows to insert contextual objects into the class,
   // e.g. ServletContext, Request, Response, UriInfo
@@ -68,5 +72,13 @@ public class CategoriesRessource {
   @Path("{categorie}")
   public CategorieRessource getCategorie(@PathParam("categorie") int id) {
     return new CategorieRessource(uriInfo, request, id);
+  }
+  
+  @Path("add")
+  @POST
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.TEXT_PLAIN)
+  public void createCategorie(Categorie categorie) {
+	  ctx.insertCategorie(categorie);
   }
 }

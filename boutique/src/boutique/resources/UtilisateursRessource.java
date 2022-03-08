@@ -2,6 +2,8 @@ package boutique.resources;
 
 import boutique.dao.*;
 import boutique.model.*;
+import db.BoutiqueDbContext;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,8 @@ import javax.xml.bind.JAXBElement;
 @Path("/utilisateurs")
 public class UtilisateursRessource {
 
+	private BoutiqueDbContext ctx = new BoutiqueDbContext();
+	
   // Allows to insert contextual objects into the class,
   // e.g. ServletContext, Request, Response, UriInfo
   @Context
@@ -76,7 +80,6 @@ public class UtilisateursRessource {
   
   @Path("{utilisateur}/panier")
   public PanierRessource getPanierByUtilisateur(@PathParam("utilisateur") int idUser) {
-	  //rechercher le panier avec le bon l'id user
 	  List<Panier> paniers = new ArrayList<Panier>();
 	  paniers.addAll(PanierDao.instance.getModel().values());
 	  Optional<Panier> p = paniers.stream().filter(user -> user.getId() == idUser).findFirst();
@@ -88,8 +91,8 @@ public class UtilisateursRessource {
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.TEXT_PLAIN)
   public void createUser(Utilisateur user) {
+	  ctx.insertUtilisateur(user);
       System.out.print(user.getPrenom());
-      
   }
   
 }
