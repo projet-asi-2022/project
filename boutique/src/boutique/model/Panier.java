@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Panier {
 	private boolean confirme; 
+	private Utilisateur user;
 	private int id;
 	private Utilisateur user;
     private List<Article> articles = new ArrayList<>();
@@ -20,26 +21,56 @@ public class Panier {
 		
 	}
 	
+	public Panier(boolean confirme, Utilisateur user) {
+		this.confirme = confirme;
+		this.user = user;
+	}
+	
 	public List<Article> getArticles() {
 		return articles;
 	}
+	
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	};
+	
 	public void addArticle(Article article)  {
 		this.articles.add(article);
 	}
+	
 	public void removeArticle(int n)  {
 		this.articles.remove(n);
+	}
+	
+	public Utilisateur getUser() {
+		return user;
+	}
+
+	public void setUser(Utilisateur user) {
+		this.user = user;
 	}
 
 	public int getId() {
 		// TODO Auto-generated method stub
 		return this.id;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 
-	public boolean isConfirme() {
-		return confirme;
+	public int isConfirme() {
+		if(confirme)
+			return 1;
+		else 
+			return 0;
+	}
+	
+	public void setConfirme(int id) {
+		if(id == 1)
+			confirme = true;
+		else 
+			confirme = false;
 	}
 
 	public void setConfirme(boolean confirme) {

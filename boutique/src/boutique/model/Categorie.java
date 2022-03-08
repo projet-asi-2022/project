@@ -4,6 +4,9 @@ public class Categorie {
 	private String nom;
 	private int id;
 	
+	public Categorie() {
+	}
+	
 	public Categorie(String nom) {
 		this.nom = nom;
 	}
@@ -23,6 +26,10 @@ public class Categorie {
 	
 	public int getId() {
 		return this.id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setNom(String nom) {

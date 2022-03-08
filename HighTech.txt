@@ -49,6 +49,8 @@ contact TEXT NOT NULL
 CREATE TABLE Panier (
 id INTEGER PRIMARY KEY,
 confirme INTEGER NOT NULL
+idUtilisateur INTEGER NOT NULL,
+FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id)
 );
 
 CREATE TABLE PanierArticle (

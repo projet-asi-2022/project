@@ -23,38 +23,48 @@ public class Article {
 	public String getLibelle() {
 		return this.libelle;
 	}
+	
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+	
 	public String getMarque() {
 		return this.marque;
 	}
+	
 	public void setMarque(String marque) {
 		this.marque = marque;
 	}
+	
 	public double getPrix() {
 		return this.prix;
 	}
+	
 	public void setPrix(float prix) {
 		this.prix = prix;
 	}
+	
 	public Categorie getCategorie() {
 		return this.categorie;
 	}
+	
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
+	
 	public Photo getPhoto() {
 		return this.photo;
 	}
+	
 	public void setPhoto(Photo photo) {
-		
 		this.photo = photo;
 	}
 
 	public Integer getId() {
 		return this.id;
 	} 
-    
-    
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 }

@@ -25,9 +25,11 @@ public class Utilisateur {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getNom() {
 		return nom;
 	}
@@ -39,6 +41,7 @@ public class Utilisateur {
 	public String getPrenom() {
 		return prenom;
 	}
+	
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
@@ -62,6 +65,7 @@ public class Utilisateur {
 	public String getDateNaissance() {
 		return dateNaissance;
 	}
+	
 	public void setDateNaissance(String date_naissance) {
 		this.dateNaissance = date_naissance;
 	}
