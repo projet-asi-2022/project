@@ -6,7 +6,7 @@ import {
 import { Injectable } from '@angular/core';
 
 import { Observable, Subject, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 const optionRequete = {
   headers: new HttpHeaders({
     'Access-Control-Allow-Origin': '*',
