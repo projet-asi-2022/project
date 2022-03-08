@@ -32,7 +32,7 @@ public class ArticleRessource {
 
   //Application integration
   @GET
-  @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+  @Produces({ MediaType.APPLICATION_JSON })
   public Article getArticle() {
     Article Article = ArticleDao.instance.getModel().get(id);
     if (Article == null) throw new RuntimeException(
@@ -49,7 +49,8 @@ public class ArticleRessource {
     if (Article == null) throw new RuntimeException(
       "Get: Article with " + id + " not found"
     );
-    return Article;
+    return Article
+  	 ;
   }
 
   @PUT
@@ -60,11 +61,12 @@ public class ArticleRessource {
   }
 
   @DELETE
+  @Produces({ MediaType.APPLICATION_JSON })
   public void deleteArticle() {
-    Article c = ArticleDao.instance.getModel().remove(id);
-    if (c == null) throw new RuntimeException(
-      "Delete: Article with " + id + " not found"
-    );
+   // Article c = ArticleDao.instance.getModel().remove(id);
+    System.out.print("oue oue oue");
+    
+   
   }
 
   private Response putAndGetResponse(Article Article) {

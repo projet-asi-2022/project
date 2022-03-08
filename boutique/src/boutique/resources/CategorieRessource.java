@@ -62,9 +62,7 @@ public class CategorieRessource {
   @DELETE
   public void deleteCategorie() {
     Categorie c = CategorieDao.instance.getModel().remove(id);
-    if (c == null) throw new RuntimeException(
-      "Delete: Categorie with " + id + " not found"
-    );
+
   }
 
   private Response putAndGetResponse(Categorie Categorie) {

@@ -45,6 +45,9 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.articlesService.getAllArticlesFromServer();
   }
 
+  test(id: number) {
+    this.articlesService.deleteArticle(id);
+  }
   ngOnDestroy(): void {
     this.articlesSub.unsubscribe();
   }

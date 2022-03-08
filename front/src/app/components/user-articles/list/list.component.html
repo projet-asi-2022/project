@@ -11,5 +11,6 @@
       <h5 class="card-title">{{ article.libelle }}</h5>
       <p class="card-text">Description: </p>
       <a href="#" class="btn btn-primary"   [routerLink]="['/articles', article.id]">Details</a>
+      <mat-icon (click)="test(article.id)">delete</mat-icon></div>
     </div>
   </div></div>

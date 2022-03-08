@@ -18,12 +18,23 @@ public enum ArticleDao {
         // String libelle, String marque, float prix, Categorie categorie, Photo photo
         contentProvider.put(1, souris);
         
-Categorie pcbureau = new Categorie(1, "PcBureau");
+Categorie pcbureau = new Categorie(2, "PcBureau");
     	
         Article pcbureau1 = new Article(2,"omen", "HP", 1500, pcbureau);
         // String libelle, String marque, float prix, Categorie categorie, Photo photo
         contentProvider.put(2, pcbureau1);
         
+
+    	
+        Article pcbureau2 = new Article(3,"Dell", "HP", 1000, pcbureau);
+        // String libelle, String marque, float prix, Categorie categorie, Photo photo
+        contentProvider.put(3, pcbureau2);
+        
+Categorie pcPortable = new Categorie(3, "PcPortable");
+    	
+        Article pcportable = new Article(4,"MAC", "Apple", 1900, pcPortable);
+        // String libelle, String marque, float prix, Categorie categorie, Photo photo
+        contentProvider.put(4, pcportable);
         System.out.println(souris);
 
     }

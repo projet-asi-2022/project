@@ -6,6 +6,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -24,10 +25,12 @@ public class PanierRessource {
 
   int id;
 
+
   public PanierRessource(UriInfo uriInfo, Request request, int id) {
     this.uriInfo = uriInfo;
     this.request = request;
     this.id = id;
+   
   }
 
   //Application integration
@@ -51,7 +54,7 @@ public class PanierRessource {
     );
     return Panier;
   }
-
+ 
   @PUT
   @Consumes(MediaType.APPLICATION_XML)
   public Response putPanier(JAXBElement<Panier> Panier) {

@@ -14,7 +14,7 @@ public class Article {
 		this.marque = marque;
 		this.prix = prix;
 		this.categorie = categorie;
-		this.photo = null;
+		this.photo = new Photo();
 	}
     public Article() { 
     } 
