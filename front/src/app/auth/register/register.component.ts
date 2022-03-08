@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.authService.signIn(this.loginForm.value);
+    this.authService.register(this.loginForm.value);
     this.router.navigateByUrl('/admin');
   }
 

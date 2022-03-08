@@ -1,7 +1,8 @@
 package boutique.resources;
 
-import boutique.dao.*;
 import boutique.model.*;
+import db.BoutiqueDbContext;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,8 @@ import javax.xml.bind.JAXBElement;
 @Path("/articles")
 public class ArticlesRessource {
 
+	private BoutiqueDbContext ctx = new BoutiqueDbContext();
+	
   // Allows to insert contextual objects into the class,
   // e.g. ServletContext, Request, Response, UriInfo
   @Context
@@ -37,51 +40,27 @@ public class ArticlesRessource {
   @GET
   @Produces(MediaType.TEXT_XML)
   public Response getArticlesBrowser() {
-    List<Article> Articles = new ArrayList<Article>();
-    Articles.addAll(ArticleDao.instance.getModel().values());
-    return Response
-      .status(200)
-      .header("Access-Control-Allow-Origin", "*")
-      .header(
-        "Access-Control-Allow-Headers",
-        "origin, content-type, accept, authorization"
-      )
-      .header("Access-Control-Allow-Credentials", "true")
-      .header(
-        "Access-Control-Allow-Methods",
-        "GET, POST, PUT, DELETE, OPTIONS, HEAD"
-      )
-      .header("Access-Control-Max-Age", "1209600")
-      .entity(Articles)
-      .build();
+    return ctx.getArticles();
   }
 
   // Return the list of Articles for applications
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
   public List<Article> getArticles() {
-    List<Article> Articles = new ArrayList<Article>();
-    Articles.addAll(ArticleDao.instance.getModel().values());
-    return Articles;
-  }
-
-  @GET
-  @Path("count")
-  @Produces(MediaType.TEXT_PLAIN)
-  public String getCount() {
-    int count = ArticleDao.instance.getModel().size();
-    return String.valueOf(count);
+    return ctx.getArticles();
   }
 
   @Path("{article}")
   public ArticleRessource getArticle(@PathParam("article") int id) {
     return new ArticleRessource(uriInfo, request, id);
   }
+  
   @Path("add")
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.TEXT_PLAIN)
   public void createArticle(Article article) {
+	  ctx.insertArticle(article);
       System.out.print(article.getLibelle());
   }
 }

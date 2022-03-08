@@ -1,7 +1,8 @@
 package boutique.resources;
 
-import boutique.dao.*;
 import boutique.model.*;
+import db.BoutiqueDbContext;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,8 @@ import javax.xml.bind.JAXBElement;
 
 @Path("/categories")
 public class CategoriesRessource {
+	
+	private BoutiqueDbContext ctx = new BoutiqueDbContext();
 
   // Allows to insert contextual objects into the class,
   // e.g. ServletContext, Request, Response, UriInfo
@@ -37,36 +40,26 @@ public class CategoriesRessource {
   @GET
   @Produces(MediaType.TEXT_XML)
   public Response getCategoriesBrowser() {
-    List<Categorie> Categories = new ArrayList<Categorie>();
-    Categories.addAll(CategorieDao.instance.getModel().values());
-    return Response
-            .status(200)
-            .header("Access-Control-Allow-Origin", "*")
-            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-            .header("Access-Control-Allow-Credentials", "true")
-            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-            .header("Access-Control-Max-Age", "1209600")
-            .entity(Categories).build();
+    return ctx.getCategories();
   }
 
   // Return the list of Categories for applications
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
   public Response getCategories() {
-    List<Categorie> Categories = new ArrayList<Categorie>();
-    Categories.addAll(CategorieDao.instance.getModel().values());
-    return Response
-            .status(200)
-            .header("Access-Control-Allow-Origin", "*")
-            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-            .header("Access-Control-Allow-Credentials", "true")
-            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-            .header("Access-Control-Max-Age", "1209600")
-            .entity(Categories).build();
+    return ctx.getCategories();
   }
 
   @Path("{categorie}")
   public CategorieRessource getCategorie(@PathParam("categorie") int id) {
     return new CategorieRessource(uriInfo, request, id);
+  }
+  
+  @Path("add")
+  @POST
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.TEXT_PLAIN)
+  public void createCategorie(Categorie categorie) {
+	  ctx.insertCategorie(categorie);
   }
 }

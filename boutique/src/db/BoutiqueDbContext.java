@@ -313,27 +313,17 @@ public class BoutiqueDbContext {
 		return article;
 	}
 	
-	/*public ArrayList<Article> getArticles() {
+	public ArrayList<Article> getArticles() {
 		PreparedStatement ps = null;
 		ArrayList<Integer> ids = new ArrayList<Integer>();
+		
 		try {
 			ps = conn.prepareStatement(GET_ARTICLES_SQL);
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				article.setId(rs.getInt("id"));
-			    article.setLibelle(rs.getString("libelle")); 
-			    article.setMarque(rs.getString("marque")); 
-			    article.setPrix((float) rs.getDouble("prix"));
-			    photoId = rs.getInt("idPhoto");
-			    categorieId = rs.getInt("categorieId");
+				ids.add(rs.getInt("id"));
             }
-			
-			photo = getPhoto((int) photoId);
-			categorie = getCategorie((int) categorieId);
-			
-			article.setPhoto(photo);
-			article.setCategorie(categorie);
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -342,8 +332,98 @@ public class BoutiqueDbContext {
 			close(ps);
 		}
 		
-		return article;
-	}*/
+		ArrayList<Article> articles = new ArrayList<Article>();
+		ids.forEach(id -> {
+			Article article = getArticle(id);
+			articles.add(article);
+		});
+		
+		return articles;
+	}
+	
+	public ArrayList<Categorie> getCategories() {
+		PreparedStatement ps = null;
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		
+		try {
+			ps = conn.prepareStatement(GET_CATEGORIES_SQL);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				ids.add(rs.getInt("id"));
+            }
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			close(ps);
+		}
+		
+		ArrayList<Categorie> categories = new ArrayList<Categorie>();
+		ids.forEach(id -> {
+			Categorie categorie = getCategorie(id);
+			categories.add(categorie);
+		});
+		
+		return categories;
+	}
+	
+	public ArrayList<Panier> getPaniers() {
+		PreparedStatement ps = null;
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		
+		try {
+			ps = conn.prepareStatement(GET_PANIERS_SQL);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				ids.add(rs.getInt("id"));
+            }
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			close(ps);
+		}
+		
+		ArrayList<Panier> paniers = new ArrayList<Panier>();
+		ids.forEach(id -> {
+			Panier panier = getPanier(id);
+			paniers.add(panier);
+		});
+		
+		return paniers;
+	}
+	
+	public ArrayList<Utilisateur> getUtilisateurs() {
+		PreparedStatement ps = null;
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		
+		try {
+			ps = conn.prepareStatement(GET_UTILISATEURS_SQL);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				ids.add(rs.getInt("id"));
+            }
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			close(ps);
+		}
+		
+		ArrayList<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
+		ids.forEach(id -> {
+			Utilisateur utilisateur = getUtilisateur(id);
+			utilisateurs.add(utilisateur);
+		});
+		
+		return utilisateurs;
+	}
 	
 	public Role getRole(int id) {
 		PreparedStatement ps = null;

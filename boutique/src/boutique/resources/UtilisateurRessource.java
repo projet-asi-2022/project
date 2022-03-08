@@ -1,7 +1,8 @@
 package boutique.resources;
 
-import boutique.dao.UtilisateurDao;
 import boutique.model.Utilisateur;
+import db.BoutiqueDbContext;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,6 +17,8 @@ import javax.xml.bind.JAXBElement;
 
 public class UtilisateurRessource {
 
+	private BoutiqueDbContext ctx = new BoutiqueDbContext();
+	
   @Context
   UriInfo uriInfo;
 
@@ -34,7 +37,7 @@ public class UtilisateurRessource {
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
   public Utilisateur getUtilisateur() {
-    Utilisateur Utilisateur = UtilisateurDao.instance.getModel().get(id);
+    Utilisateur Utilisateur = ctx.getUtilisateur(id);
     if (Utilisateur == null) throw new RuntimeException(
       "Get: Utilisateur with " + id + " not found"
     );
@@ -45,36 +48,10 @@ public class UtilisateurRessource {
   @GET
   @Produces(MediaType.TEXT_XML)
   public Utilisateur getUtilisateurHTML() {
-    Utilisateur Utilisateur = UtilisateurDao.instance.getModel().get(id);
+    Utilisateur Utilisateur = ctx.getUtilisateur(id);
     if (Utilisateur == null) throw new RuntimeException(
       "Get: Utilisateur with " + id + " not found"
     );
     return Utilisateur;
-  }
-
-  @PUT
-  @Consumes(MediaType.APPLICATION_XML)
-  public Response putUtilisateur(JAXBElement<Utilisateur> Utilisateur) {
-    Utilisateur c = Utilisateur.getValue();
-    return putAndGetResponse(c);
-  }
-
-  @DELETE
-  public void deleteUtilisateur() {
-    Utilisateur c = UtilisateurDao.instance.getModel().remove(id);
-    if (c == null) throw new RuntimeException(
-      "Delete: Utilisateur with " + id + " not found"
-    );
-  }
-
-  private Response putAndGetResponse(Utilisateur Utilisateur) {
-    Response res;
-    if (UtilisateurDao.instance.getModel().containsKey(Utilisateur.getId())) {
-      res = Response.noContent().build();
-    } else {
-      res = Response.created(uriInfo.getAbsolutePath()).build();
-    }
-    UtilisateurDao.instance.getModel().put(Utilisateur.getId(), Utilisateur);
-    return res;
   }
 }

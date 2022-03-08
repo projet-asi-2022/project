@@ -1,7 +1,8 @@
 package boutique.resources;
 
-import boutique.dao.CategorieDao;
 import boutique.model.Categorie;
+import db.BoutiqueDbContext;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,6 +17,8 @@ import javax.xml.bind.JAXBElement;
 
 public class CategorieRessource {
 
+	private BoutiqueDbContext ctx = new BoutiqueDbContext();
+	
   @Context
   UriInfo uriInfo;
 
@@ -34,7 +37,7 @@ public class CategorieRessource {
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
   public Categorie getCategorie() {
-    Categorie Categorie = CategorieDao.instance.getModel().get(id);
+    Categorie Categorie = ctx.getCategorie(id);
     if (Categorie == null) throw new RuntimeException(
       "Get: Categorie with " + id + " not found"
     );
@@ -45,34 +48,10 @@ public class CategorieRessource {
   @GET
   @Produces(MediaType.TEXT_XML)
   public Categorie getCategorieHTML() {
-    Categorie Categorie = CategorieDao.instance.getModel().get(id);
+    Categorie Categorie = ctx.getCategorie(id);
     if (Categorie == null) throw new RuntimeException(
       "Get: Categorie with " + id + " not found"
     );
     return Categorie;
-  }
-
-  @PUT
-  @Consumes(MediaType.APPLICATION_XML)
-  public Response putCategorie(JAXBElement<Categorie> Categorie) {
-    Categorie c = Categorie.getValue();
-    return putAndGetResponse(c);
-  }
-
-  @DELETE
-  public void deleteCategorie() {
-    Categorie c = CategorieDao.instance.getModel().remove(id);
-
-  }
-
-  private Response putAndGetResponse(Categorie Categorie) {
-    Response res;
-    if (CategorieDao.instance.getModel().containsKey(Categorie.getId())) {
-      res = Response.noContent().build();
-    } else {
-      res = Response.created(uriInfo.getAbsolutePath()).build();
-    }
-    CategorieDao.instance.getModel().put(Categorie.getId(), Categorie);
-    return res;
   }
 }

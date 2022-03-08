@@ -8,14 +8,23 @@ public class Article {
     private Categorie categorie;
 	private Photo photo;
     
-    public Article(int id,String libelle, String marque, double prix, Categorie categorie) {
-    	this.id=id;
+	public Article(String libelle, String marque, double prix, Categorie categorie, Photo photo) {
 		this.libelle = libelle;
 		this.marque = marque;
 		this.prix = prix;
 		this.categorie = categorie;
 		this.photo = new Photo();
 	}
+	
+    public Article(int id,String libelle, String marque, double prix, Categorie categorie, Photo photo) {
+    	this.id=id;
+		this.libelle = libelle;
+		this.marque = marque;
+		this.prix = prix;
+		this.categorie = categorie;
+		this.photo = photo;
+	}
+    
     public Article() { 
     } 
 	

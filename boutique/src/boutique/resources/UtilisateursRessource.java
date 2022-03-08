@@ -1,10 +1,13 @@
 package boutique.resources;
 
-import boutique.dao.*;
 import boutique.model.*;
+import db.BoutiqueDbContext;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -24,7 +27,8 @@ import javax.xml.bind.JAXBElement;
 
 @Path("/utilisateurs")
 public class UtilisateursRessource {
-
+	private BoutiqueDbContext ctx = new BoutiqueDbContext();
+	
   // Allows to insert contextual objects into the class,
   // e.g. ServletContext, Request, Response, UriInfo
   @Context
@@ -37,30 +41,14 @@ public class UtilisateursRessource {
   @GET
   @Produces(MediaType.TEXT_XML)
   public List<Utilisateur> getUtilisateursBrowser() {
-    List<Utilisateur> Utilisateurs = new ArrayList<Utilisateur>();
-    Utilisateurs.addAll(UtilisateurDao.instance.getModel().values());
-    return Utilisateurs;
+    return ctx.getUtilisateurs();
   }
 
   // Return the list of Utilisateurs for applications
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
   public List<Utilisateur> getUtilisateurs() {
-    List<Utilisateur> Utilisateurs = new ArrayList<Utilisateur>();
-    Utilisateurs.addAll(UtilisateurDao.instance.getModel().values());
-    return Utilisateurs;
-  }
-
-  // returns the number of Utilisateurs
-  // Use http://localhost:8080/com.vogella.jersey.Utilisateur/rest/Utilisateurs/count
-  // rest.Utilisateur au lieu de com.vogella.jersey.Utilisateur
-  // to get the total number of records
-  @GET
-  @Path("count")
-  @Produces(MediaType.TEXT_PLAIN)
-  public String getCount() {
-    int count = UtilisateurDao.instance.getModel().size();
-    return String.valueOf(count);
+    return ctx.getUtilisateurs();
   }
   
   // Defines that the next path parameter after Utilisateurs is
@@ -72,13 +60,20 @@ public class UtilisateursRessource {
     return new UtilisateurRessource(uriInfo, request, id);
   }
   
+  @Path("{utilisateur}/panier")
+  public PanierRessource getPanierByUtilisateur(@PathParam("utilisateur") int idUser) {
+	  List<Panier> paniers = ctx.getPaniers();
+	  Optional<Panier> p = paniers.stream().filter(user -> user.getId() == idUser).findFirst();
+	  return new PanierRessource(uriInfo, request, p.get().getUser().getId());
+  }
+  
   @Path("add")
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.TEXT_PLAIN)
   public void createUser(Utilisateur user) {
+	  ctx.insertUtilisateur(user);
       System.out.print(user.getPrenom());
-      
   }
   
 }
