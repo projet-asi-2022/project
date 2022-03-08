@@ -1,6 +1,5 @@
 package boutique.resources;
 
-import boutique.dao.*;
 import boutique.model.*;
 import db.BoutiqueDbContext;
 
@@ -41,32 +40,14 @@ public class PaniersRessource {
   @GET
   @Produces(MediaType.TEXT_XML)
   public Response getPaniersBrowser() {
-    List<Panier> Paniers = new ArrayList<Panier>();
-    Paniers.addAll(PanierDao.instance.getModel().values());
-    return Response
-            .status(200)
-            .header("Access-Control-Allow-Origin", "*")
-            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-            .header("Access-Control-Allow-Credentials", "true")
-            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-            .header("Access-Control-Max-Age", "1209600")
-            .entity(Paniers).build();
+    return ctx.getPaniers();
   }
 
   // Return the list of Paniers for applications
   @GET
   @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
   public Response getPaniers() {
-    List<Panier> Paniers = new ArrayList<Panier>();
-    Paniers.addAll(PanierDao.instance.getModel().values());
-    return Response
-            .status(200)
-            .header("Access-Control-Allow-Origin", "*")
-            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-            .header("Access-Control-Allow-Credentials", "true")
-            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-            .header("Access-Control-Max-Age", "1209600")
-            .entity(Paniers).build();
+    return ctx.getPaniers() ; 
   }
 
   // Defines that the next path parameter after Paniers is
