@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -45,15 +46,6 @@ public class UtilisateurRessource {
     return Utilisateur;
   }
   
-  @GET
-  @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-  public String userExist(String email, String password) {
-    String role = ctx.userExist(email, password).toString();
-    if (role == null) throw new RuntimeException(
-    	      "Get: Utilisateur with " + email + " not found"
-    	    );
-    return role;
-  }
 
   // for the browser
   @GET

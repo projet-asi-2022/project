@@ -76,4 +76,15 @@ public class UtilisateursRessource {
       System.out.print(user.getPrenom());
   }
   
+
+  
+  @Path("exists")
+  @POST
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+  public String userExist(Utilisateur user) {
+    String role = ctx.userExist(user.getEmail(), user.getPassword());
+    return role;
+  }
+
 }

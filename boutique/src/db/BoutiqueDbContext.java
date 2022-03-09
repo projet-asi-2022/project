@@ -48,7 +48,7 @@ public class BoutiqueDbContext {
 	public BoutiqueDbContext() {
 		try {
 			Class.forName("org.sqlite.JDBC");
-			String dbURL = "jdbc:sqlite:HighTech.db";
+			String dbURL = "jdbc:sqlite:C:\\Users\\flake\\Depots\\project_asi\\boutique\\src\\db\\HighTech.db";
 			conn = DriverManager.getConnection(dbURL);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -565,7 +565,7 @@ public class BoutiqueDbContext {
 	public String userExist(String email, String password) {
 		PreparedStatement ps = null;
 		boolean exist=false;
-		Role role = null;
+		String role = "";
 		try {
 			ps = conn.prepareStatement(GET_UTILISATEUR_EXIST_SQL);
 			ps.setString(1, email);
@@ -575,7 +575,7 @@ public class BoutiqueDbContext {
 			while (rs.next()) {
 				long id = (rs.getInt("id"));
 				Utilisateur utilisateur = getUtilisateur((int) id);
-				role = utilisateur.getRole();
+				role = utilisateur.getRole().toString();
             }
 		}
 		catch(SQLException e) {
@@ -585,7 +585,7 @@ public class BoutiqueDbContext {
 			close(ps);
 		}
 		
-		return role.toString();
+		return role;
 	}
 
 	
