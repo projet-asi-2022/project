@@ -3,6 +3,8 @@ import { ArticlesService } from 'src/app/services/articles/articles.service';
 import { LocationStrategy } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
+import { fakeAsync } from '@angular/core/testing';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -11,14 +13,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UserListComponent implements OnInit, OnDestroy {
   articlesSub: Subscription;
   articles: any[];
+  userSUb: Subscription;
+  user: any;
   currentArticle: any;
   currentIndex = -1;
   searchTitle = '';
   categorie = '';
+  
   constructor(
     private articlesService: ArticlesService,
     private url: LocationStrategy,
-    private route: Router
+    private route: Router,
+    private userService:AuthService
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +55,30 @@ export class UserListComponent implements OnInit, OnDestroy {
     );
 
     this.articlesService.getAllArticlesFromServer();
+
+     this.userSUb = this.userService.userSub.subscribe(
+      (data) => {
+         this.user = data;
+      }
+    );
+
+    this.userService.emituser();
+  }
+
+  checkuser() {
+    this.userService.emituser();
+    console.log(this.user);
+    console.log("test");
+    if (this.user != null && this.user.role != null) {
+      if (this.user.role == "Admin") {
+        return true;
+      }
+      else {
+        return false;
+      }
+      
+    }
+    return false;
   }
 
   test(id: number) {
