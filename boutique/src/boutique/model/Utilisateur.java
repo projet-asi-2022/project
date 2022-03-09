@@ -20,6 +20,7 @@ public class Utilisateur {
 	}
 	
 	public Utilisateur(int id,String nom, String prenom, String email, String password, String dateNaissance,Role role) {
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;

@@ -22,7 +22,7 @@ public class BoutiqueDbContext {
 	private static final String INSERT_CATEGORIE_SQL = "INSERT INTO Categorie(nom) VALUES(?)";
 	private static final String INSERT_ROLE_SQL = "INSERT INTO Role(nom) VALUES(?)";
 	private static final String INSERT_BOUTIQUE_SQL = "INSERT INTO Boutique(description, adresse, contact) VALUES(?, ?, ?)";
-	private static final String INSERT_PANIER_SQL = "INSERT INTO Panier(confirme) VALUES(?)";
+	private static final String INSERT_PANIER_SQL = "INSERT INTO Panier(confirme, idUtilisateur) VALUES(?, ?)";
 	private static final String INSERT_PANIER_ARTICLE_SQL = "INSERT INTO PanierArticle(idPanier, idArticle) VALUES(?, ?)";
 	private static final String INSERT_UTILISATEUR_SQL = "INSERT INTO Utilisateur(nom, prenom, email, idRole, dateNaissance) VALUES(?, ?, ?, ?, ?)";
 	private static final String INSERT_ARTICLE_SQL = "INSERT INTO Article(libelle, marque, prix, idPhoto, idCategorie) VALUES(?, ?, ?, ?, ?)";
@@ -138,6 +138,7 @@ public class BoutiqueDbContext {
 		try {
 			ps = conn.prepareStatement(INSERT_PANIER_SQL);
 			ps.setInt(1, panier.isConfirme());
+			ps.setInt(2, panier.getUser().getId());
 			int numRowsInserted = ps.executeUpdate();
 			ResultSet keys = ps.getGeneratedKeys();
 			id = keys.getLong(1);
@@ -230,10 +231,11 @@ public class BoutiqueDbContext {
 		return id;
 	}
 	
-	public long deleteArticle(int id) {
+	public void deleteArticle(int id) {
 		PreparedStatement ps = null;
 		try {			
 			ps = conn.prepareStatement(DELETE_ARTICLE_BY_ID_SQL);
+			ps.setLong(1, id);
 			ResultSet rs = ps.executeQuery();
 		}
 		catch(SQLException e) {
@@ -242,7 +244,6 @@ public class BoutiqueDbContext {
 		finally {
 			close(ps);
 		}
-		return id;
 	}
 	
 	public Photo getPhoto(int id) {
@@ -532,7 +533,7 @@ public class BoutiqueDbContext {
 		PreparedStatement ps = null;
 		Panier panier = new Panier();
 		try {
-			ps = conn.prepareStatement(GET_CATEGORIE_BY_ID_SQL);
+			ps = conn.prepareStatement(GET_PANIER_BY_ID_SQL);
 			ps.setLong(1, id);
 			ResultSet rs = ps.executeQuery();
 			

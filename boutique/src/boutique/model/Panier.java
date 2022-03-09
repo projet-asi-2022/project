@@ -10,7 +10,8 @@ public class Panier {
     private List<Article> articles = new ArrayList<>();
 	private Double prixTotal(){return this.articles.stream().mapToDouble(a -> a.getPrix()).reduce(0, Double::sum);}
 	
-	public Panier(boolean confirme) {
+	public Panier(Utilisateur user, boolean confirme) {
+		this.user = user;
 		this.confirme = confirme;
 	}
 	
