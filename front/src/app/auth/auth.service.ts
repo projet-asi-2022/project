@@ -26,23 +26,31 @@ export class AuthService {
     "email": "Paul", 
     "password": "Paul", 
     "dateNaissance": "Paul", 
-    "role": "user"
+    "role": "Admin"
 };
     userSub = new Subject<any>();
 
     constructor(private httpClient: HttpClient) { }
+
     public signIn(userData: User){
-        this.httpClient.get<any[]>(this.apiUrl).subscribe((reponse) => {
-           // this.user = userData;
-        });
-        localStorage.setItem('ACCESS_TOKEN', "access_token");
+        this.httpClient.post<any>(this.apiUrl+'/add', {
+            email: userData.email,
+            password: userData.password,
+        }).subscribe(data => {
+            console.log(data);
+            if(data[0] !== undefined){ 
+                if(data[0] === 1){
+                    localStorage.setItem('ACCESS_TOKEN', "access_token");
+                }
+            }
+        })
     }
 
-      emituser() {
-    this.userSub.next(this.user);
-  }
+    emituser() {
+        this.userSub.next(this.user);
+    }
+
     public register(userData: User){
-        console.log(this.apiUrl+'/add');
         this.httpClient.post<any>(this.apiUrl+'/add', {
             prenom: userData.prenom,
             nom: userData.nom,
