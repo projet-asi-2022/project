@@ -10,13 +10,18 @@ public class Utilisateur {
 
 	public Role role ; 
 	
-	public Utilisateur(String nom, String prenom, String email, String password, String dateNaissance,Role role) {
+	public Utilisateur(String nom, String prenom, String email, String password, String dateNaissance,String role) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.password = password;
 		this.dateNaissance = dateNaissance;
-		this.role = role;
+		if (role == "Admin") {
+			this.role = Role.Admin;
+		}
+		else {
+			this.role = Role.User;
+		}
 	}
 	
 	public Utilisateur(int id,String nom, String prenom, String email, String password, String dateNaissance,Role role) {
