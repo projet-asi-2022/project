@@ -29,13 +29,14 @@ export class AuthService {
         localStorage.setItem('ACCESS_TOKEN', "access_token");
     }
     public register(userData: User){
-        this.httpClient.post<any>(this.apiUrl, {
+        console.log(this.apiUrl+'/add');
+        this.httpClient.post<any>(this.apiUrl+'/add', {
             prenom: userData.prenom,
             nom: userData.nom,
             email: userData.email,
             password: userData.password,
             dateNaissance: userData.dateNaissance,
-            role: "user"
+            role: "User"
         }).subscribe(data => {
             this.user = userData;
         })
