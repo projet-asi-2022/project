@@ -1,11 +1,13 @@
 <div class="container">
-  <h1> {{article.libelle}}</h1>
+ 
   <div class="row">
 <div class="col-2"> 
   <img src="https://www.lizardfootwear.com/_ui/responsive/common/images/no-product-image-available.png" class="card-img-top" alt="...">
-</div>
+</div> <h1> {{article.libelle}}</h1>
 <div class="col-6"> 
-    <p>Description: </p>
+    <p>Description: </p><!-- 
+
+     -->
   </div>
 </div>
 <br/>
@@ -14,6 +16,7 @@
 <mat-icon [routerLink]="['/update']">edit</mat-icon>
 <mat-icon (click)="delete(article.id)">delete</mat-icon></div>
 <div class="row">
+   <h3> {{article.prix}} euros</h3>
   <div class="col-md-3 ms-md-auto">
     <button class="btn-success" (click)="addToPanier()">Ajouter au panier</button></div>
 </div>
