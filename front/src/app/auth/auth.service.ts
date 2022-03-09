@@ -6,6 +6,7 @@ import {
     HttpErrorResponse,
     HttpHeaders,
   } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 const optionRequete = {
     headers: new HttpHeaders({
@@ -19,15 +20,27 @@ const optionRequete = {
 
 export class AuthService {
     apiUrl: string = environment.api + 'utilisateurs';
-    user: any;
+    user:any={
+    "prenom": "Paul", 
+    "nom": "Paul", 
+    "email": "Paul", 
+    "password": "Paul", 
+    "dateNaissance": "Paul", 
+    "role": "user"
+};
+    userSub = new Subject<any>();
 
     constructor(private httpClient: HttpClient) { }
     public signIn(userData: User){
         this.httpClient.get<any[]>(this.apiUrl).subscribe((reponse) => {
-            this.user = userData;
+           // this.user = userData;
         });
         localStorage.setItem('ACCESS_TOKEN', "access_token");
     }
+
+      emituser() {
+    this.userSub.next(this.user);
+  }
     public register(userData: User){
         console.log(this.apiUrl+'/add');
         this.httpClient.post<any>(this.apiUrl+'/add', {

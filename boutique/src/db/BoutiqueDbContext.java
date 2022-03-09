@@ -24,8 +24,8 @@ public class BoutiqueDbContext {
 	private static final String INSERT_BOUTIQUE_SQL = "INSERT INTO Boutique(description, adresse, contact) VALUES(?, ?, ?)";
 	private static final String INSERT_PANIER_SQL = "INSERT INTO Panier(confirme, idUtilisateur) VALUES(?, ?)";
 	private static final String INSERT_PANIER_ARTICLE_SQL = "INSERT INTO PanierArticle(idPanier, idArticle) VALUES(?, ?)";
-	private static final String INSERT_UTILISATEUR_SQL = "INSERT INTO Utilisateur(nom, prenom, email, idRole, dateNaissance) VALUES(?, ?, ?, ?, ?)";
-	private static final String INSERT_ARTICLE_SQL = "INSERT INTO Article(libelle, marque, prix, idPhoto, idCategorie) VALUES(?, ?, ?, ?, ?)";
+	private static final String INSERT_UTILISATEUR_SQL = "INSERT INTO Utilisateur(nom, prenom, password, email, idRole, dateNaissance) VALUES(?, ?, ?, ?, ?, ?)";
+	private static final String INSERT_ARTICLE_SQL = "INSERT OR REPLACE INTO Article(libelle, marque, prix, idPhoto, idCategorie) VALUES(?, ?, ?, ?, ?)";
 	
 	private static final String DELETE_ARTICLE_BY_ID_SQL = "DELETE FROM Article WHERE id = ?";
 	
@@ -96,9 +96,10 @@ public class BoutiqueDbContext {
 			ps = conn.prepareStatement(INSERT_UTILISATEUR_SQL);
 			ps.setString(1, utilisateur.getNom());
 			ps.setString(2, utilisateur.getPrenom());
-			ps.setString(3, utilisateur.getEmail());
-			ps.setLong(4, roleId);
-			ps.setString(5, utilisateur.getDateNaissance());
+			ps.setString(3, utilisateur.getPassword());
+			ps.setString(4, utilisateur.getEmail());
+			ps.setLong(5, roleId);
+			ps.setString(6, utilisateur.getDateNaissance());
 			int numRowsInserted = ps.executeUpdate();
 			ResultSet keys = ps.getGeneratedKeys();
 			id = keys.getLong(1);
@@ -477,6 +478,7 @@ public class BoutiqueDbContext {
 				utilisateur.setId(rs.getInt("id"));
 				utilisateur.setNom(rs.getString("nom"));
 				utilisateur.setPrenom(rs.getString("prenom"));
+				utilisateur.setPassword(rs.getString("password"));
 				utilisateur.setEmail(rs.getString("email"));
 				utilisateur.setDateNaissance(rs.getString("dateNaissance"));
 			    
@@ -558,6 +560,7 @@ public class BoutiqueDbContext {
 		
 		return panier;
 	}
+
 	
 	public static void close(Statement statement) {
         try {
