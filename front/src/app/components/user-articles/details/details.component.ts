@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ArticlesService } from 'src/app/services/articles/articles.service';
 import { PanierService } from 'src/app/services/panier/panier.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-details',
@@ -13,7 +14,7 @@ import { PanierService } from 'src/app/services/panier/panier.service';
 export class UserDetailsComponent implements OnInit {
   currentArticle: any;
   message = '';
-  apiUrl: string = 'http://localhost:8080/boutique/rest/articles';
+  apiUrl: string = environment.api + 'articles';
   article: any;
 
   constructor(
@@ -33,7 +34,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   delete(id: number) {
-    console.log('test');
     this.articleService.deleteArticle(id);
   }
 
