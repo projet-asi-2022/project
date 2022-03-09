@@ -76,8 +76,8 @@ public class Utilisateur {
 		return dateNaissance;
 	}
 	
-	public void setDateNaissance(String date_naissance) {
-		this.dateNaissance = date_naissance;
+	public void setDateNaissance(String dateNaissance) {
+		this.dateNaissance = dateNaissance;
 	}
 	
 

@@ -34,11 +34,11 @@
       <div *ngIf="formControls['password'].errors?.['required']">Password is required</div>
     </div>
 
-    <p [ngClass]="{ 'has-error': isSubmitted && formControls['date_naissance'].errors }">
-      <input type="date" placeholder="Date de naissance" formControlName="date_naissance">
+    <p [ngClass]="{ 'has-error': isSubmitted && formControls['dateNaissance'].errors }">
+      <input type="date" placeholder="Date de naissance" formControlName="dateNaissance">
     </p>
-    <div *ngIf="isSubmitted && formControls['date_naissance'].errors" class="help-block">
-      <div *ngIf="formControls['date_naissance'].errors?.['required']">Date de naissance is required</div>
+    <div *ngIf="isSubmitted && formControls['dateNaissance'].errors" class="help-block">
+      <div *ngIf="formControls['dateNaissance'].errors?.['required']">Date de naissance is required</div>
     </div>
 
     <p>

@@ -28,7 +28,7 @@ export class ConnexionComponent implements OnInit {
       password: ['', Validators.required],
       prenom: [''],
       nom: [''],
-      date_naissance: [''],
+      dateNaissance: [''],
     });
   }
 
