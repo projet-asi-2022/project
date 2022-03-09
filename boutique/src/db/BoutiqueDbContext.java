@@ -41,13 +41,14 @@ public class BoutiqueDbContext {
 	private static final String GET_CATEGORIES_SQL = "SELECT id FROM Categorie";
 	private static final String GET_PANIERS_SQL = "SELECT id FROM Panier";
 	private static final String GET_UTILISATEURS_SQL = "SELECT id FROM Utilisateur";
+	private static final String GET_UTILISATEUR_EXIST_SQL = "SELECT id FROM Utilisateur where email = ? and password = ?";
 	
 	private Connection conn;
 	
 	public BoutiqueDbContext() {
 		try {
 			Class.forName("org.sqlite.JDBC");
-			String dbURL = "jdbc:sqlite:/home/malinvaud/Dev/project/boutique/src/db/HighTech.db";
+			String dbURL = "jdbc:sqlite:HighTech.db";
 			conn = DriverManager.getConnection(dbURL);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -559,6 +560,32 @@ public class BoutiqueDbContext {
 		}
 		
 		return panier;
+	}
+	
+	public String userExist(String email, String password) {
+		PreparedStatement ps = null;
+		boolean exist=false;
+		Role role = null;
+		try {
+			ps = conn.prepareStatement(GET_UTILISATEUR_EXIST_SQL);
+			ps.setString(1, email);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				long id = (rs.getInt("id"));
+				Utilisateur utilisateur = getUtilisateur((int) id);
+				role = utilisateur.getRole();
+            }
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			close(ps);
+		}
+		
+		return role.toString();
 	}
 
 	
