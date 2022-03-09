@@ -39,8 +39,9 @@ export class AuthService {
         }).subscribe(data => {
             console.log(data);
             if(data[0] !== undefined){ 
-                if(data[0] === 1){
+                if(data[0] === "User"){
                     localStorage.setItem('ACCESS_TOKEN', "access_token");
+                    this.user = userData;
                 }
             }
         })
