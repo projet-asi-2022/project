@@ -33,7 +33,7 @@ export class AuthService {
     constructor(private httpClient: HttpClient) { }
 
     public signIn(userData: User){
-        this.httpClient.post<any>(this.apiUrl+'/add', {
+        this.httpClient.post<any>(this.apiUrl+'/exists', {
             email: userData.email,
             password: userData.password,
         }).subscribe(data => {
