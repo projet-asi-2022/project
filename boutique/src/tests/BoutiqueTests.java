@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -113,7 +114,23 @@ class BoutiqueTests {
 		assertNotNull(photo);
 	}
 	
+	@Test
+	public void getCategorie() {
+		Categorie categorie = ctx.getCategorie(1);
+		assertNotNull(categorie);
+	}
 	
+	@Test
+	public void getArticles() {
+		ArrayList<Article> articles = ctx.getArticles();
+		assertNotNull(articles);
+	}
+	
+	@Test 
+	public void getPaniers() {
+		ArrayList<Panier> paniers = ctx.getPaniers();
+		assertNotNull(paniers);
+	}
 	
 	@Test
 	public void deleteArticle() {
