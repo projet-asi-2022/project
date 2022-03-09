@@ -3,6 +3,7 @@ package boutique.resources;
 import boutique.model.Utilisateur;
 import db.BoutiqueDbContext;
 
+import javax.management.relation.Role;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -42,6 +43,16 @@ public class UtilisateurRessource {
       "Get: Utilisateur with " + id + " not found"
     );
     return Utilisateur;
+  }
+  
+  @GET
+  @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+  public String userExist(String email, String password) {
+    String role = ctx.userExist(email, password).toString();
+    if (role == null) throw new RuntimeException(
+    	      "Get: Utilisateur with " + email + " not found"
+    	    );
+    return role;
   }
 
   // for the browser

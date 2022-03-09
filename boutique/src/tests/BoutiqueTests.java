@@ -163,6 +163,12 @@ class BoutiqueTests {
 	}
 	
 	@Test
+	public void userExist() {
+		String role = ctx.userExist("jebray@gmail.com", "password");
+		assertNotNull(role);
+	}
+	
+	@Test
 	public void deleteArticle() {
 		ctx.deleteArticle(1);
 
