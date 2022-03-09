@@ -82,7 +82,16 @@ class BoutiqueTests {
 	
 	@Test
 	public void insertPanier() {
-		Panier panier = new Panier(true);
+		Utilisateur utilisateur = new Utilisateur(
+				1,
+				"JEBBARI", 
+				"Rayhane", 
+				"jebray@gmail.com",
+				"password",
+				"20/10/04",
+				Role.User
+				);
+		Panier panier = new Panier(utilisateur, true);
 		long id = ctx.insertPanier(panier);
 		assertEquals(1, id);
 	}
@@ -93,7 +102,16 @@ class BoutiqueTests {
 		long articleId = ctx.insertArticle(article);
 		article.setId((int) articleId);
 		
-		Panier panier = new Panier(true);
+		Utilisateur utilisateur = new Utilisateur(
+				1,
+				"JEBBARI", 
+				"Rayhane", 
+				"jebray@gmail.com",
+				"password",
+				"20/10/04",
+				Role.User
+				);
+		Panier panier = new Panier(utilisateur, true);
 		long panierId = ctx.insertPanier(panier);
 		panier.setId((int) panierId);
 		
@@ -112,6 +130,12 @@ class BoutiqueTests {
 	public void getPhoto() {
 		Photo photo = ctx.getPhoto(1);
 		assertNotNull(photo);
+	}
+	
+	@Test
+	public void getPanier() {
+		Panier panier = ctx.getPanier(2);
+		assertNotNull(panier);
 	}
 	
 	@Test
@@ -134,8 +158,8 @@ class BoutiqueTests {
 	
 	@Test
 	public void deleteArticle() {
-		long id = ctx.deleteArticle(1);
-		assertEquals(1,id);
+		ctx.deleteArticle(1);
+
 	}
 	
 	
