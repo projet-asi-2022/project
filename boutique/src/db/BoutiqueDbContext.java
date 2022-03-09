@@ -27,7 +27,7 @@ public class BoutiqueDbContext {
 	private static final String INSERT_UTILISATEUR_SQL = "INSERT INTO Utilisateur(nom, prenom, email, idRole, dateNaissance) VALUES(?, ?, ?, ?, ?)";
 	private static final String INSERT_ARTICLE_SQL = "INSERT INTO Article(libelle, marque, prix, idPhoto, idCategorie) VALUES(?, ?, ?, ?, ?)";
 	
-	private static final String DELETE_ARTICLE_BY_ID_SQL = "DELETE * FROM Article WHERE id = ?";
+	private static final String DELETE_ARTICLE_BY_ID_SQL = "DELETE FROM Article WHERE id = ?";
 	
 	private static final String GET_PHOTO_BY_ID_SQL = "SELECT * FROM Photo WHERE id = ?";
 	private static final String GET_ARTICLE_BY_ID_SQL = "SELECT * FROM Article WHERE id = ?";
@@ -236,7 +236,7 @@ public class BoutiqueDbContext {
 		try {			
 			ps = conn.prepareStatement(DELETE_ARTICLE_BY_ID_SQL);
 			ps.setLong(1, id);
-			ResultSet rs = ps.executeQuery();
+			ps.executeUpdate();
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
