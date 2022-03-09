@@ -1,6 +1,6 @@
 CREATE TABLE Photo (
 id INTEGER PRIMARY KEY,
-size INTEGER NOT NULL,
+size FLOAT NOT NULL,
 url TEXT NOT NULL
 );
 
@@ -31,6 +31,7 @@ nom TEXT NOT NULL,
 prenom TEXT NOT NULL,
 email TEXT NOT NULL,
 idRole INTEGER NOT NULL,
+dateNaissance TEXT NOT NULL,
 FOREIGN KEY (idRole) REFERENCES Role(id)
 );
 
@@ -44,6 +45,8 @@ contact TEXT NOT NULL
 CREATE TABLE Panier (
 id INTEGER PRIMARY KEY,
 confirme INTEGER NOT NULL
+idUtilisateur INTEGER NOT NULL,
+FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur(id)
 );
 
 CREATE TABLE PanierArticle (
