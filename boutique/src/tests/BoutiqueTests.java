@@ -156,11 +156,15 @@ class BoutiqueTests {
 		assertNotNull(paniers);
 	}
 	
+	@Test 
+	public void getUtilisateur() {
+		Utilisateur utilisateur = ctx.getUtilisateur(1);
+	    assertNotNull(utilisateur);
+	}
+	
 	@Test
 	public void deleteArticle() {
 		ctx.deleteArticle(1);
 
 	}
-	
-	
 }
