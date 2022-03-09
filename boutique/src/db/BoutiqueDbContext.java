@@ -47,7 +47,7 @@ public class BoutiqueDbContext {
 	public BoutiqueDbContext() {
 		try {
 			Class.forName("org.sqlite.JDBC");
-			String dbURL = "jdbc:sqlite:HighTech.db";
+			String dbURL = "jdbc:sqlite:/home/malinvaud/Dev/project/boutique/src/db/HighTech.db";
 			conn = DriverManager.getConnection(dbURL);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
