@@ -235,7 +235,6 @@ public class BoutiqueDbContext {
 		try {			
 			ps = conn.prepareStatement(DELETE_ARTICLE_BY_ID_SQL);
 			ResultSet rs = ps.executeQuery();
-			return id ;
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -243,7 +242,7 @@ public class BoutiqueDbContext {
 		finally {
 			close(ps);
 		}
-		return 11;
+		return id;
 	}
 	
 	public Photo getPhoto(int id) {
