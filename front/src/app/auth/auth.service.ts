@@ -34,7 +34,8 @@ export class AuthService {
             nom: userData.nom,
             email: userData.email,
             password: userData.password,
-            dateNaissance: userData.dateNaissance
+            dateNaissance: userData.dateNaissance,
+            role: "user"
         }).subscribe(data => {
             this.user = userData;
         })
